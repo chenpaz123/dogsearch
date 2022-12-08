@@ -53,6 +53,7 @@ const sendData = async (
 ) => {
   const url = "http://localhost:3000/visitordata";
   try {
+    console.log("in try");
     const res = await fetch(url, {
       method: "POST",
       body: JSON.stringify({
@@ -64,7 +65,9 @@ const sendData = async (
         "Content-Type": "application/json",
       },
     });
+    console.log("after fetch");
     const data = await res.json();
+    console.log("after json");
     console.log(data);
     if (data["date"] == brucelladate && data["chip"] == chipnum) {
       try {
@@ -105,6 +108,7 @@ const sendData = async (
       }
     }
   } catch (error) {
+    console.log("in catch");
     console.log(error);
     alert(`brucella not added because of error: ${error}`);
   }
