@@ -1,6 +1,5 @@
 //when pressing a button having the id of "button1" make post request to the server with the data from the input having the id of "chipnum" and print the response to the console in json format.
 //
-import firebasejson from "./firebaseconfig.json" assert { type: "json" };
 
 const vetfirstname = localStorage.getItem("vetfirstname");
 const vetlastname = localStorage.getItem("vetlastname");
@@ -121,7 +120,7 @@ const PrintData = (data) => {
   document.getElementById("chipnum").value = "";
 };
 //document.getElementById("button2").addEventListener("click", addDogToShow);
-
+import firebasejson from "./firebaseconfig.json" assert { type: "json" };
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
 import {
   getDatabase,
