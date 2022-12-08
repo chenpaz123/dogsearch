@@ -1,5 +1,6 @@
 //when pressing a button having the id of "button1" make post request to the server with the data from the input having the id of "chipnum" and print the response to the console in json format.
 //
+import firebasejson from "./firebaseconfig.json" assert { type: "json" };
 
 const vetfirstname = localStorage.getItem("vetfirstname");
 const vetlastname = localStorage.getItem("vetlastname");
@@ -129,17 +130,7 @@ import {
   onValue,
 } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyDCdTeILONozSlC2_H7DjlBElwGagllH7w",
-  authDomain: "dog-search-17ece.firebaseapp.com",
-  databaseURL:
-    "https://dog-search-17ece-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "dog-search-17ece",
-  storageBucket: "dog-search-17ece.appspot.com",
-  messagingSenderId: "1029399604242",
-  appId: "1:1029399604242:web:8b071b5348abc5770b7ccb",
-  measurementId: "G-J151C2GPQG",
-};
+const firebaseConfig = firebasejson;
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
@@ -150,4 +141,3 @@ onValue(ref(db, "chip/"), (snapshot) => {
   console.log(data);
   CheckChip(data);
 });
-
