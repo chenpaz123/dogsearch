@@ -14,18 +14,22 @@ const getvisitordata = async ({ showdate, kennelclubname, image }) => {
       return {
         status: 401,
         message: "אין מספר שבב",
+        date: date,
       };
     }
     if (BrucellaValid == false) {
       return {
         status: 402,
         message: "ברוצלה לא בתוקף",
+        chip: chip,
+        date: date,
       };
     }
     if (date == undefined) {
       return {
         status: 403,
         message: "אין תאריך ברוצלה",
+        chip: chip,
       };
     }
 

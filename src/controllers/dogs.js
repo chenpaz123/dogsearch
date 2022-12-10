@@ -35,14 +35,16 @@ const addDogToShow = async ({ ChipNum, KenelClubName }) => {
         dog: dog,
         KalevetValid: IsValid,
         brucelladate: brucelladate,
-        BrucellaValid: true,
+        BrucellaValid: doc.exists,
         status: 201,
         message: "dog added to the show",
       };
     } else {
       return {
+        dog: dog,
         status: 400,
-        data: "dog is not valid",
+        KalevetValid: IsValid,
+        BrucellaValid: doc.exists,
         message: "can't add dog to the show",
       };
     }
@@ -50,6 +52,9 @@ const addDogToShow = async ({ ChipNum, KenelClubName }) => {
     console.log(error);
     if (error == "TypeError: Failed to fetch") {
       return {
+        KalevetValid: IsValid,
+        brucelladate: brucelladate,
+        BrucellaValid: doc.exists,
         message: "אין חיבור לאינטרנט",
         status: 500,
       };

@@ -94,11 +94,26 @@ const sendData = async (
         alert("ברוצלה לא בתוקף");
         location.reload();
       } else {
-        if (data["chip"] !== chipnum) {
+        if (data["status"] == 403) {
+          alert("אין תאריך ברוצלה");
+          location.reload();
+        }
+        if (data["status"] == 401) {
+          alert("אין מספר שבב");
+          location.reload();
+        }
+        if (data["chip"] !== chipnum && data["chip"] !== undefined) {
+          console.log("in chipnum else");
+          console.log(data["chip"]);
+          console.log(chipnum);
           alert("מספר שבב לא תואם");
           location.reload();
         }
-        if (data["date"] !== brucelladate) {
+        if (newdate !== brucelladate && data["date"] !== undefined) {
+          console.log("in brucelladate else");
+          console.log(newdate);
+          console.log(brucelladate);
+
           alert("תאריך ברוצלה לא תואם");
           location.reload();
         }
@@ -113,5 +128,7 @@ const sendData = async (
 
 function fixdate(date) {
   const [year, month, day] = date.split("-");
-  return `${day}/${month}/${year}`;
+  date = `${day}/${month}/${year}`;
+  console.log(date);
+  return date;
 }
