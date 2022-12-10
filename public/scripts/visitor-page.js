@@ -1,14 +1,13 @@
 document.getElementById("button1").addEventListener("click", onFormSubmit);
 async function onFormSubmit() {
-  event.preventDefault();
+  console.log("in onFormSubmit");
   showdate = document.getElementById("showdate").value;
   chipnum = document.getElementById("chipnum").value;
   kennelclubname = document.getElementById("kennelclubname").value;
   brucelladate = document.getElementById("brucelladate").value;
   file = document.getElementById("file").files[0];
   const fileurl = await getimageurl(file);
-  console.log(chipnum);
-  sendData(
+  await sendData(
     fixdate(showdate),
     chipnum,
     kennelclubname,
@@ -16,9 +15,6 @@ async function onFormSubmit() {
     fileurl
   );
 }
-/*
-const image = "C:\\Users\\chenp\\OneDrive\\Documents\\Project\\projecto\\node js\\src\\cd test.jpg";
-*/
 
 /*
 const getimageurl = async (image) => {
@@ -51,10 +47,11 @@ const sendData = async (
   brucelladate,
   image
 ) => {
-  const url = "http://localhost:3000/visitordata";
   try {
     console.log("in try");
-    const res = await fetch(url, {
+
+    //todo: check this fucking fetch that doesn't work
+    const res = await fetch("http://localhost:3000/visitordata", {
       method: "POST",
       body: JSON.stringify({
         showdate: showdate,
@@ -71,7 +68,7 @@ const sendData = async (
     console.log(data);
     if (data["date"] == brucelladate && data["chip"] == chipnum) {
       try {
-        const res = await fetch("http://localhost:3000/brucellafiresotre", {
+        const res2 = await fetch("http://localhost:3000/brucellafiresotre", {
           method: "POST",
           body: JSON.stringify({
             chipnum: chipnum,
@@ -83,7 +80,7 @@ const sendData = async (
             "Content-Type": "application/json",
           },
         });
-        const data2 = await res.json();
+        const data2 = await res2.json();
         console.log(data2);
         if (data2["status"] == 201) {
           alert("ברוצלה נוספה בהצלחה");

@@ -138,5 +138,10 @@ const db = getDatabase(app);
 onValue(ref(db, "chip/"), (snapshot) => {
   const data = snapshot.val();
   console.log(data);
-  CheckChip(data);
+  if (data != 0) {
+    CheckChip(data);
+  }
+  //change the value of the chip number in the database to 0
+  setTimeout(200);
+  set(ref(db, "chip/"), 0);
 });
