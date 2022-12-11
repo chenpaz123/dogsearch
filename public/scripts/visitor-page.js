@@ -102,18 +102,24 @@ const sendData = async (
           alert("אין מספר שבב");
           location.reload();
         }
-        if (data["chip"] !== chipnum && data["chip"] !== undefined) {
+        if (data["status"] == 405) {
+          alert("אין תמונה");
+          location.reload();
+        }
+        if (data["chip"] !== chipnum && data["stutus"] !== 401) {
           console.log("in chipnum else");
           console.log(data["chip"]);
           console.log(chipnum);
           alert("מספר שבב לא תואם");
           location.reload();
         }
-        if (newdate !== brucelladate && data["date"] !== undefined) {
+        if (
+          data["date"] !== brucelladate &&
+          data["stutus"] !== 402 &&
+          data["stutus"] !== 403
+        ) {
           console.log("in brucelladate else");
-          console.log(newdate);
           console.log(brucelladate);
-
           alert("תאריך ברוצלה לא תואם");
           location.reload();
         }
