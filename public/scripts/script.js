@@ -46,6 +46,7 @@ const addDogToShow = async () => {
   const KenelClubName = localStorage.getItem("KenelClubName");
   console.log(KenelClubName);
   try {
+    console.log("in in try");
     const response = await fetch(url, {
       method: "POST",
       headers: {
@@ -55,13 +56,17 @@ const addDogToShow = async () => {
         KenelClubName: KenelClubName,
       }),
     });
+    console.log("after fetch");
+    console.log(response);
     const data = await response.json();
+    console.log("after response");
     console.log(data);
     if (data.status == 201) {
       PrintData(data);
       alert("הכלב רשאי להיכנס לתערוכה");
     }
     if (data.status == 400) {
+      PrintData(data);
       alert("הכלב אינו רשאי להיכנס לתערוכה");
     }
     if (data.status == 500) {
@@ -103,6 +108,11 @@ const PrintData = (data) => {
   document.getElementById("kalevetvalid").innerHTML = data["KalevetValid"];
   document.getElementById("brucellavalid").innerHTML = data["BrucellaValid"];
 
+  if (data["brucelladate"] == undefined) {
+    document.getElementById("brucelladate").innerHTML = "לא נמצא";
+    document.getElementById("brucellavalid").style.color = "red";
+  }
+
   if (data["KalevetValid"]) {
     document.getElementById("kalevetvalid").style.color = "green";
     document.getElementById("kalevetvalid").innerHTML = "בתוקף";
@@ -138,5 +148,10 @@ const db = getDatabase(app);
 onValue(ref(db, "chip/"), (snapshot) => {
   const data = snapshot.val();
   console.log(data);
-  CheckChip(data);
+  if (data != 0) {
+    CheckChip(data);
+  }
+  //change the value of the chip number in the database to 0
+  setTimeout(200);
+  set(ref(db, "chip/"), 0);
 });
