@@ -1,4 +1,5 @@
 const { db } = require("../firebase/firebase");
+
 const brucellafiresotre = async (chipnum, date, KenelClubName, ShowDate) => {
   ShowDate = ShowDate.replace(/\//g, ".");
   const docname = `${KenelClubName} - ${ShowDate}`;
