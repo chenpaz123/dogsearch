@@ -68,54 +68,26 @@ const getvisitordata = async ({ showdate, kennelclubname, image }) => {
 
 function fixdate(date) {
   const moment = require("moment");
-  const date1 = moment(date, "DD/MM/YYYY");
-  const date2 = moment(date, "DD.MM.YYYY");
-  const date3 = moment(date, "DD-MM-YYYY");
-  const date4 = moment(date, "DD/MM/YY");
-  const date5 = moment(date, "DD.MM.YY");
-  const date6 = moment(date, "DD-MM-YY");
-  const date7 = moment(date, "DD/MM");
-  const date8 = moment(date, "DD.MM");
-  const date9 = moment(date, "DD-MM");
-  const date10 = moment(date, "DD/MM/YY");
-  const date11 = moment(date, "DD.MM.YY");
-  const date12 = moment(date, "DD-MM-YY");
+  const datesformats = [
+    "DD/MM/YYYY",
+    "DD.MM.YYYY",
+    "DD-MM-YYYY",
+    "DD/MM/YY",
+    "DD.MM.YY",
+    "DD-MM-YY",
+    "DD/MM",
+    "DD.MM",
+    "DD-MM",
+    "DD/MM/YY",
+    "DD.MM.YY",
+    "DD-MM-YY",
+  ];
 
-  if (date1.isValid()) {
-    return date1.format("DD/MM/YYYY");
-  }
-  if (date2.isValid()) {
-    return date2.format("DD/MM/YYYY");
-  }
-  if (date3.isValid()) {
-    return date3.format("DD/MM/YYYY");
-  }
-  if (date4.isValid()) {
-    return date4.format("DD/MM/YYYY");
-  }
-  if (date5.isValid()) {
-    return date5.format("DD/MM/YYYY");
-  }
-  if (date6.isValid()) {
-    return date6.format("DD/MM/YYYY");
-  }
-  if (date7.isValid()) {
-    return date7.format("DD/MM/YYYY");
-  }
-  if (date8.isValid()) {
-    return date8.format("DD/MM/YYYY");
-  }
-  if (date9.isValid()) {
-    return date9.format("DD/MM/YYYY");
-  }
-  if (date10.isValid()) {
-    return date10.format("DD/MM/YYYY");
-  }
-  if (date11.isValid()) {
-    return date11.format("DD/MM/YYYY");
-  }
-  if (date12.isValid()) {
-    return date12.format("DD/MM/YYYY");
+  for (let i = 0; i < datesformats.length; i++) {
+    const date2 = moment(date, datesformats[i], true);
+    if (date2.isValid()) {
+      return date2.format("DD/MM/YYYY");
+    }
   }
 }
 
