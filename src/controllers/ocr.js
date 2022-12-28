@@ -15,6 +15,7 @@ const ocr = async (image) => {
       message: "no chip number or date",
     };
   }
+  var date, chip1;
   if (dates !== null) {
     date = dates[dates.length - 1];
     console.log("date: ", date);

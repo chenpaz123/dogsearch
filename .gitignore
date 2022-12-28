@@ -3,3 +3,4 @@ node_modules
 src/firebase/key.json
 public/scripts/firebaseconfig.json
 test.js
+.dist
