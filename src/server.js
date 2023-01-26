@@ -6,6 +6,7 @@ const showsrouter = require("./routers/shows");
 const ocrrouter = require("./routers/ocr");
 const visitordatarouter = require("./routers/visitor");
 const brucellarouter = require("./routers/brucella");
+const mangerouter = require("./routers/manger");
 process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = "0";
 
 app.use(
@@ -25,6 +26,7 @@ app.use(showsrouter);
 app.use(ocrrouter);
 app.use(visitordatarouter);
 app.use(brucellarouter);
+app.use(mangerouter);
 
 app.get("/", (req, res) => {
   res.send({
