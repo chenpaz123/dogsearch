@@ -6,8 +6,10 @@ admin.initializeApp({
   databaseURL: process.env.dbURL,
   bucket: "dog-search-17ece.appspot.com",
 });
-const db = admin.firestore();
-//realtime database
-const rtdb = admin.database();
 
-module.exports = { admin, db };
+//initialize firestore
+const db = admin.firestore();
+//initialize auth
+const auth = admin.auth();
+
+module.exports = { admin, db, auth };

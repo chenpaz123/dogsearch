@@ -1,8 +1,8 @@
 const ReadText = require("text-from-image");
 const { extractDates, extractChip } = require("../utils/ocr");
 
-//const image =
-//"C:\\Users\\chenp\\OneDrive\\Documents\\Project\\projecto\\test.jpg";
+// const image =
+//   "C:\\Users\\chenp\\OneDrive\\Documents\\Project\\projecto\\test.jpg";
 
 const ocr = async (image) => {
   console.log("ocr started");
@@ -47,6 +47,6 @@ const ocr = async (image) => {
   };
 };
 
-//ocr(image);
+// ocr(image);
 
 module.exports = { ocr };
