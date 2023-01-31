@@ -1,10 +1,14 @@
+<!--crate a page in the same way as the other pages in the public folder that hs 3
+options: create show, update show and delete show // style it int the same way
+of the other pages-->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dog Search</title>
+    <title>Document</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -36,13 +40,13 @@
               <a class="nav-link" href="index.html">עמוד בית</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="vet-login.html">ממשק ווטרינר</a>
+              <a class="nav-link" href="vet-login.html">ממשק ווטרינר</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="visitor-page.html">ממשק מבקר</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="manager-page.html">ממשק מנהל</a>
+              <a class="nav-link active" href="manager-page.html">ממשק מנהל</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="contact-us.html">צור קשר</a>
@@ -51,20 +55,27 @@
         </div>
       </div>
     </nav>
-    <!--create a login form with username and password centered in a rectangle border-->
     <div class="container">
       <div class="row">
         <div class="col-md-4 offset-md-4 mt-5 form login-form">
           <form id="login-form">
-            <h2 class="text-center">כניסת ווטרינר</h2>
-            <p class="text-center">הכנס את מספר הרישיון שלך</p>
+            <h2 class="text-center">ממשק מנהל</h2>
+            <p class="text-center">היכנס לממשק המנהל</p>
             <div class="form-group mt-2 mb-3">
               <input
-                type="password"
-                name="license number"
+                type="email"
+                name="email"
                 class="form-control"
-                placeholder="מספר רישיון"
-                id="license number"
+                placeholder="אימייל"
+                id="email"
+                required
+              />
+              <input
+                type="password"
+                name="password"
+                class="form-control"
+                placeholder="סיסמא"
+                id="password"
                 required
               />
             </div>
@@ -79,18 +90,7 @@
           </form>
         </div>
       </div>
-      <div id="myModal" class="modal">
-        <!-- Modal content -->
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <p class="text-xl-center">
-            מספר הרישיון לא נמצא במאגר<br />
-            נסה שנית
-          </p>
-        </div>
-      </div>
     </div>
-    <script src="../scripts/vet-login-script.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
