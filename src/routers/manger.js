@@ -19,23 +19,16 @@ router.post("/createShow", async (req, res) => {
 });
 
 router.patch("/updateshow", async (req, res) => {
-  const KenelClubName = req.body.KenelClubName;
-  const date = req.body.date;
+  const getshow = req.body.show;
   const newkennelclub = req.body.newkennelclub;
   const newdate = req.body.newdate;
-  const response = await updateshow(
-    KenelClubName,
-    date,
-    newkennelclub,
-    newdate
-  );
+  const response = await updateshow(getshow, newkennelclub, newdate);
   res.send(response);
 });
 
 router.delete("/deleteShow", async (req, res) => {
-  const KenelClubName = req.body.KenelClubName;
-  const date = req.body.date;
-  const response = await deleteShow(KenelClubName, date);
+  const getshow = req.body.show;
+  const response = await deleteShow(getshow);
   res.send(response);
 });
 

@@ -1,6 +1,4 @@
-<!--crate a page in the same way as the other pages in the public folder that hs 3
-options: create show, update show and delete show // style it int the same way
-of the other pages-->
+<!--crate a page in the same way as the other pages in the public folder that has 3 options: create show, update show and delete show-->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -55,47 +53,33 @@ of the other pages-->
         </div>
       </div>
     </nav>
+
+    <!--crate a page in the same way as the other pages in the public folder that has 3 options: create show, update show and delete show-->
     <div class="container">
       <div class="row">
-        <div class="col-md-4 offset-md-4 mt-5 form login-form">
-          <form id="login-form">
-            <h2 class="text-center">ממשק מנהל</h2>
-            <p class="text-center">היכנס לממשק המנהל</p>
-            <div class="form-group mt-2 mb-3">
-              <input
-                type="email"
-                name="email"
-                class="form-control"
-                placeholder="אימייל"
-                id="email"
-                required
-              />
-              <input
-                type="password"
-                name="password"
-                class="form-control"
-                placeholder="סיסמא"
-                id="password"
-                required
-              />
-            </div>
-            <div class="form-group w-25" style="margin: auto">
-              <input
-                type="submit"
-                name="login"
-                class="btn btn-primary"
-                value="Login"
-                id="login-button"
-              />
-            </div>
-          </form>
+        <div class="col-12">
+          <h1>ברוכים הבאים לממשק המנהל</h1>
         </div>
       </div>
-    </div>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+      <div class="row">
+        <div class="col-12">
+          <h2>בחרו את הפעולה הרצויה</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <a href="create-show.html" style="margin-bottom: 10px;" class="btn btn-primary">צור תערוכה</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <a href="update-show.html" style="margin-bottom: 10px;" class="btn btn-primary">עדכן תערוכה</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <a href="delete-show.html" style="margin-bottom: 10px;" class="btn btn-primary">מחק תערוכה</a>
+        </div>
+      </div>
+</body>
 </html>

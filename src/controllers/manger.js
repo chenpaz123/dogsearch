@@ -1,6 +1,9 @@
 const { db, auth } = require("../firebase/firebase");
+const { fixdatetodot } = require("../utils/fixdate");
+//const {firebase} = require("firebase")
 // make the document name as the show name and date and put no data in it
 const createShow = async (KenelClubName, date) => {
+  date = fixdatetodot(date);
   const show = await db.collection("shows").doc(`${KenelClubName} - ${date}`);
   try {
     if ((await show.get()).exists) {
@@ -24,8 +27,9 @@ const createShow = async (KenelClubName, date) => {
 
 // create a func that gets show name and date and updates it on the database
 
-const updateshow = async (KenelClubName, date, newkennelclub, newdate) => {
-  const show = await db.collection("shows").doc(`${KenelClubName} - ${date}`);
+const updateshow = async (getshow, newkennelclub, newdate) => {
+  const show = await db.collection("shows").doc(`${getshow}`);
+  newdate = fixdatetodot(newdate);
   const newshow = await db
     .collection("shows")
     .doc(`${newkennelclub} - ${newdate}`);
@@ -53,8 +57,8 @@ const updateshow = async (KenelClubName, date, newkennelclub, newdate) => {
 };
 
 // create a func that gets show name and date and delete it from the database
-const deleteShow = async (KenelClubName, date) => {
-  const show = await db.collection("shows").doc(`${KenelClubName} - ${date}`);
+const deleteShow = async (getshow) => {
+  const show = await db.collection("shows").doc(`${getshow}`);
   try {
     if (!(await show.get()).exists) {
       return {

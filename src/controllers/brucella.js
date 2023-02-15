@@ -1,8 +1,7 @@
 const { db } = require("../firebase/firebase");
 
-const brucellafiresotre = async (chipnum, date, KenelClubName, ShowDate) => {
-  ShowDate = ShowDate.replace(/\//g, ".");
-  const docname = `${KenelClubName} - ${ShowDate}`;
+const brucellafiresotre = async (show, chipnum, date) => {
+  const docname = `${show}`;
   try {
     const docRef = db
       .collection("shows")

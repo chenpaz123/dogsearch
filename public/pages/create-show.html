@@ -1,0 +1,181 @@
+<!--crate a page in the same way as the other pages in the public folder that has 3 options: create show, update show and delete show-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="nav-link" href="index.html">
+          <span class="navbar-brand mb-0 h1">RexiChip</span>
+        </a>
+        <button
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarnav"
+          aria-controls="navbarnav"
+          aria-expanded="false"
+          aria-label="Toggle nav"
+          class="navbar-toggler"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarnav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">עמוד בית</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="vet-login.html">ממשק ווטרינר</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="visitor-page.html">ממשק מבקר</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="manager-page.html">ממשק מנהל</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact-us.html">צור קשר</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!--crate a page in the same way as the other pages in the public folder that will create a show selecting date for the sow and kennel club name-->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h1 class="text-center">צור תערוכה</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <form id="form">
+            <div class="mb-3">
+              <label for="date" class="form-label">תאריך</label>
+              <input
+                type="date"
+                class="form-control"
+                id="date"
+                name="date"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="kennelClub" class="form-label">שם מועדון</label>
+              <select id="selection" required class="form-select">
+                <option selected hidden>בחר את המועדון</option>
+                <option value="תערוכה בין לאומית">תערוכה בין לאומית</option>
+                <option value="המועדון הישראלי לדני ענק">
+                  המועדון הישראלי לדני ענק
+                </option>
+                <option value="החוג הישראלי לכלבי דוגה">
+                  החוג הישראלי לכלבי דוגה
+                </option>
+                <option value="המועדון הישראלי לדוברמן">
+                  המועדון הישראלי לדוברמן
+                </option>
+                <option value="המועדון הישראלי לכלבי בוקסר">
+                  המועדון הישראלי לכלבי בוקסר
+                </option>
+                <option value="החוג הישראלי לאילוף כלבים ואג'יליטי">
+                  החוג הישראלי לאילוף כלבים ואג'יליטי
+                </option>
+                <option value="המועדון הישראלי לכלבי הרים שוויצרים">
+                  המועדון הישראלי לכלבי הרים שוויצרים
+                </option>
+                <option value="המועדון הישראלי לכלבי הצלה במים">
+                  המועדון הישראלי לכלבי הצלה במים
+                </option>
+                <option value="המועדון הישראלי לכלבי הגנה והצלה">
+                  המועדון הישראלי לכלבי הגנה והצלה
+                </option>
+                <option value="החוג הישראלי להאונדס">
+                  החוג הישראלי להאונדס
+                </option>
+                <option value="החוג הישראלי לכלבי דקל">
+                  החוג הישראלי לכלבי דקל
+                </option>
+                <option value="מועדון ספורט כלבי עבודה">
+                  מועדון ספורט כלבי עבודה
+                </option>
+                <option value="החוג הישראלי לסן-ברנרד ולאונברגר">
+                  החוג הישראלי לסן-ברנרד ולאונברגר
+                </option>
+                <option value="המועדון הישראלי לספורט המוניאורינג">
+                  המועדון הישראלי לספורט המוניאורינג
+                </option>
+                <option value="המועדון הישראלי לטריירים">
+                  המועדון הישראלי לטריירים
+                </option>
+                <option value="החוג הישראלי לכלבים זעירים">
+                  החוג הישראלי לכלבים זעירים
+                </option>
+                <option value="המועדון הישראלי לכלבי צאן ומרעה">
+                  המועדון הישראלי לכלבי צאן ומרעה
+                </option>
+                <option value="החוג הישראלי לפינצ'ר וטרייר רוסי שחור">
+                  החוג הישראלי לפינצ'ר וטרייר רוסי שחור
+                </option>
+                <option value="המועדון הישראלי לספניאל">
+                  המועדון הישראלי לספניאל
+                </option>
+                <option value="המועדון הישראלי לכלבי פומרניאן">
+                  המועדון הירהישראלי לכלבי פומרניאן
+                </option>
+                <option value="המועדון הישראלי לפודל">
+                  המועדון הישראלי לפודל
+                </option>
+                <option value="החוג הישראלי לכלבי רועים">
+                  החוג הישראלי לכלבי רועים
+                </option>
+                <option value="החוג הישראלי לכלבי רוח">
+                  החוג הישראלי לכלבי רוח
+                </option>
+                <option value="המועדון הישראלי לרודז'יאן רידג'בק">
+                  המועדון הישראלי לרודז'יאן רידג'בק
+                </option>
+                <option value="החוג הישראלי לכלבים צפוניים">
+                  החוג הישראלי לכלבים צפוניים
+                </option>
+                <option value="המועדון הישראלי לכלבי צייד">
+                  המועדון הישראלי לכלבי צייד
+                </option>
+                <option value="החוג הישראלי לכלבי שפיץ">
+                  החוג הישראלי לכלבי שפיץ
+                </option>
+                <option value="החוג הישראלי לשנאוצר">
+                  החוג הישראלי לשנאוצר
+                </option>
+                <option value="המועדון הישראלי לכלבי רטריבר">
+                  המועדון הישראלי לכלבי רטריבר
+                </option>
+                <option value="החוג הישראלי לכלב רועים גרמני">
+                  החוג הישראלי לכלב רועים גרמני
+                </option>
+                <option value="החוג הישראלי לכלבי רועים בלגים">
+                  החוג הישראלי לכלבי רועים בלגים
+                </option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary">שלח</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="../scripts/create-show.js"></script>
+  </body>
+</html>

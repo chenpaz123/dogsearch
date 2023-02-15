@@ -5,3 +5,4 @@ public/scripts/firebaseconfig.json
 test.js
 .dist
 src/controllers/manger-Laptop.js
+public/pages/temp

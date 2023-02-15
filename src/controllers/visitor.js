@@ -1,10 +1,11 @@
 //get the show date, the kennel club name and the image from visitor interface
 const { ocr } = require("../controllers/ocr");
 const { GetBrucellaValid } = require("../utils/hisunvalid");
+const { fixdate } = require("../utils/fixdate");
 
-const getvisitordata = async ({ showdate, kennelclubname, image }) => {
+const getvisitordata = async ({ showdate, image }) => {
   try {
-    console.log(showdate, kennelclubname, image);
+    console.log(showdate, image);
     if (image == undefined) {
       return {
         status: 405,
@@ -24,7 +25,7 @@ const getvisitordata = async ({ showdate, kennelclubname, image }) => {
         date: date2,
       };
     }
-    if (BrucellaValid == false) {
+    if (!BrucellaValid) {
       return {
         status: 402,
         message: "ברוצלה לא בתוקף",
@@ -66,29 +67,11 @@ const getvisitordata = async ({ showdate, kennelclubname, image }) => {
   }
 };
 
-function fixdate(date) {
-  const moment = require("moment");
-  const datesformats = [
-    "DD/MM/YYYY",
-    "DD.MM.YYYY",
-    "DD-MM-YYYY",
-    "DD/MM/YY",
-    "DD.MM.YY",
-    "DD-MM-YY",
-    "DD/MM",
-    "DD.MM",
-    "DD-MM",
-    "DD/MM/YY",
-    "DD.MM.YY",
-    "DD-MM-YY",
-  ];
-
-  for (let i = 0; i < datesformats.length; i++) {
-    const date2 = moment(date, datesformats[i], true);
-    if (date2.isValid()) {
-      return date2.format("DD/MM/YYYY");
-    }
-  }
-}
+/*
+getvisitordata({
+  show: "תערוכה בין לאומית - 26.05.2022",
+  image:
+    "C:\\Users\\chenp\\OneDrive\\Documents\\Project\\projecto\\node js\\src\\test.jpg",
+});*/
 
 module.exports = { getvisitordata };
