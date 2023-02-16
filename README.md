@@ -6,7 +6,7 @@ a node js server with express for checking dogs in shows, checking brucella and 
 npm install
 
 replace the provided createworker.js with the original file that is in the following path:
-\node_modules\text-from-image\node_modules\tesseract.js\src\createworker.js
+\node_modules\tesseract.js\src\createworker.js
 ```
 
 ## Usage
