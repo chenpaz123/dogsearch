@@ -5,7 +5,7 @@ const GetHisunValid = (hisundate) => {
   var today = moment();
   var diff = today.diff(hisun, "days");
   console.log(diff);
-  if (diff <= 365) {
+  if (diff <= 365 && diff >= 0) {
     return true;
   } else {
     return false;
@@ -19,7 +19,7 @@ const GetBrucellaValid = (hisundate, showdate) => {
   var showdate = moment(showdate, "DD/MM/YYYY");
   var diff = showdate.diff(hisun, "days");
   console.log(diff);
-  if (diff <= 365) {
+  if (diff <= 365 && diff >= 0) {
     return true;
   } else {
     return false;
