@@ -61,98 +61,14 @@
         </div>
         <div class="row">
           <div class="col-12">
-            <select id="selection" required class="form-select">
-              <option selected hidden>בחר את התערוכה הרצויה</option>
-              <option value="תערוכה בין לאומית">תערוכה בין לאומית</option>
-              <option value="המועדון הישראלי לדני ענק">
-                המועדון הישראלי לדני ענק
-              </option>
-              <option value="החוג הישראלי לכלבי דוגה">
-                החוג הישראלי לכלבי דוגה
-              </option>
-              <option value="המועדון הישראלי לדוברמן">
-                המועדון הישראלי לדוברמן
-              </option>
-              <option value="המועדון הישראלי לכלבי בוקסר">
-                המועדון הישראלי לכלבי בוקסר
-              </option>
-              <option value="החוג הישראלי לאילוף כלבים ואג'יליטי">
-                החוג הישראלי לאילוף כלבים ואג'יליטי
-              </option>
-              <option value="המועדון הישראלי לכלבי הרים שוויצרים">
-                המועדון הישראלי לכלבי הרים שוויצרים
-              </option>
-              <option value="המועדון הישראלי לכלבי הצלה במים">
-                המועדון הישראלי לכלבי הצלה במים
-              </option>
-              <option value="המועדון הישראלי לכלבי הגנה והצלה">
-                המועדון הישראלי לכלבי הגנה והצלה
-              </option>
-              <option value="החוג הישראלי להאונדס">החוג הישראלי להאונדס</option>
-              <option value="החוג הישראלי לכלבי דקל">
-                החוג הישראלי לכלבי דקל
-              </option>
-              <option value="מועדון ספורט כלבי עבודה">
-                מועדון ספורט כלבי עבודה
-              </option>
-              <option value="החוג הישראלי לסן-ברנרד ולאונברגר">
-                החוג הישראלי לסן-ברנרד ולאונברגר
-              </option>
-              <option value="המועדון הישראלי לספורט המוניאורינג">
-                המועדון הישראלי לספורט המוניאורינג
-              </option>
-              <option value="המועדון הישראלי לטריירים">
-                המועדון הישראלי לטריירים
-              </option>
-              <option value="החוג הישראלי לכלבים זעירים">
-                החוג הישראלי לכלבים זעירים
-              </option>
-              <option value="המועדון הישראלי לכלבי צאן ומרעה">
-                המועדון הישראלי לכלבי צאן ומרעה
-              </option>
-              <option value="החוג הישראלי לפינצ'ר וטרייר רוסי שחור">
-                החוג הישראלי לפינצ'ר וטרייר רוסי שחור
-              </option>
-              <option value="המועדון הישראלי לספניאל">
-                המועדון הישראלי לספניאל
-              </option>
-              <option value="המועדון הישראלי לכלבי פומרניאן">
-                המועדון הירהישראלי לכלבי פומרניאן
-              </option>
-              <option value="המועדון הישראלי לפודל">
-                המועדון הישראלי לפודל
-              </option>
-              <option value="החוג הישראלי לכלבי רועים">
-                החוג הישראלי לכלבי רועים
-              </option>
-              <option value="החוג הישראלי לכלבי רוח">
-                החוג הישראלי לכלבי רוח
-              </option>
-              <option value="המועדון הישראלי לרודז'יאן רידג'בק">
-                המועדון הישראלי לרודז'יאן רידג'בק
-              </option>
-              <option value="החוג הישראלי לכלבים צפוניים">
-                החוג הישראלי לכלבים צפוניים
-              </option>
-              <option value="המועדון הישראלי לכלבי צייד">
-                המועדון הישראלי לכלבי צייד
-              </option>
-              <option value="החוג הישראלי לכלבי שפיץ">
-                החוג הישראלי לכלבי שפיץ
-              </option>
-              <option value="החוג הישראלי לשנאוצר">החוג הישראלי לשנאוצר</option>
-              <option value="המועדון הישראלי לכלבי רטריבר">
-                המועדון הישראלי לכלבי רטריבר
-              </option>
-              <option value="החוג הישראלי לכלב רועים גרמני">
-                החוג הישראלי לכלב רועים גרמני
-              </option>
-              <option value="החוג הישראלי לכלבי רועים בלגים">
-                החוג הישראלי לכלבי רועים בלגים
-              </option>
-            </select>
+            <div class="form-group">
+              <select id="show-list">
+                <option disabled selected>Select a Show</option>
+              </select>
+            </div>
           </div>
         </div>
+        <br />
         <div class="row">
           <div class="col-12">
             <button type="submit" class="btn btn-primary">שלח</button>
@@ -160,7 +76,7 @@
         </div>
       </div>
     </form>
-    <script src="../scripts/option.js"></script>
+    <script src="../scripts/option.js" type="module"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"

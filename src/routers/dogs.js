@@ -22,7 +22,7 @@ router.post("/GetChipNumFromESP/:ChipNum", (req, res) => {
 router.post("/addDogToShow", async (req, res) => {
   const response = await addDogToShow({
     ChipNum: global.ChipNum,
-    KenelClubName: req.body.KenelClubName,
+    Show: req.body.Show,
   });
   res.send(response);
 });

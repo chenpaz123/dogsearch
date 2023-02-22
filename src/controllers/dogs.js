@@ -3,10 +3,10 @@ const { getdatafrommoagdb } = require("../utils/getdatafrommoagdb");
 const { db, rtdb } = require("../firebase/firebase");
 const moment = require("moment");
 
-const addDogToShow = async ({ ChipNum, KenelClubName }) => {
-  ShowDate = moment(Date.now()).format("DD.MM.YYYY");
+const addDogToShow = async ({ ChipNum, Show }) => {
+  //ShowDate = moment(Date.now()).format("DD.MM.YYYY");
   //ShowDate = "25.11.2022";
-  const docname = `${KenelClubName} - ${ShowDate}`;
+  const docname = `${Show}`;
   try {
     const data = await getdatafrommoagdb({ ChipNum });
     const dog = data["AnimalDetails"][0];

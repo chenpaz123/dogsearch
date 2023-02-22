@@ -43,8 +43,8 @@ const CheckChip = async (chipnum) => {
 
 const addDogToShow = async () => {
   const url = `http://localhost:3000/addDogToShow`;
-  const KenelClubName = localStorage.getItem("KenelClubName");
-  console.log(KenelClubName);
+  const Show = localStorage.getItem("KenelClubName");
+  console.log(Show);
   try {
     console.log("in in try");
     const response = await fetch(url, {
@@ -53,7 +53,7 @@ const addDogToShow = async () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        KenelClubName: KenelClubName,
+        Show: Show,
       }),
     });
     console.log("after fetch");
