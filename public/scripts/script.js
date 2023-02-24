@@ -7,7 +7,6 @@ const vetlastname = localStorage.getItem("vetlastname");
 document.getElementById(
   "greeting"
 ).innerHTML += ` ${vetfirstname} ${vetlastname}`;
-document.getElementById("button1").addEventListener("click", onFormSubmit);
 function onFormSubmit() {
   event.preventDefault();
   CheckChip();
@@ -45,6 +44,7 @@ const addDogToShow = async () => {
   const url = `http://localhost:3000/addDogToShow`;
   const Show = localStorage.getItem("KenelClubName");
   console.log(Show);
+  document.getElementById("scan dog").style.display = "none";
   try {
     console.log("in in try");
     const response = await fetch(url, {
@@ -127,7 +127,6 @@ const PrintData = (data) => {
     document.getElementById("brucellavalid").style.color = "red";
     document.getElementById("brucellavalid").innerHTML = "לא בתוקף";
   }
-  document.getElementById("chipnum").value = "";
 };
 //document.getElementById("button2").addEventListener("click", addDogToShow);
 import firebasejson from "./firebaseconfig.json" assert { type: "json" };
@@ -154,4 +153,9 @@ onValue(ref(db, "chip/"), (snapshot) => {
   //change the value of the chip number in the database to 0
   setTimeout(200);
   set(ref(db, "chip/"), 0);
+});
+
+//if button 2 is pressed reload the page
+document.getElementById("button2").addEventListener("click", () => {
+  location.reload();
 });
