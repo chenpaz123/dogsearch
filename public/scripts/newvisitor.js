@@ -1,4 +1,4 @@
-import { getShows } from "./getShows.js";
+import { getShows } from "./getshows.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   getShows();
