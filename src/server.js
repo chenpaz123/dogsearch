@@ -12,6 +12,7 @@ process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = "0";
 app.use(
   cors({
     origin: "*",
+    credentials: true,
   })
 );
 app.use(
