@@ -18,6 +18,7 @@ const getvisitordata = async ({ showdate, image }) => {
     console.log(date2, chip);
     //call the GetHisunValid function to check if the date is valid
     const BrucellaValid = GetBrucellaValid(date2, showdate);
+    console.log("brucella valid" + BrucellaValid);
     if (chip == undefined) {
       return {
         status: 401,
@@ -26,6 +27,7 @@ const getvisitordata = async ({ showdate, image }) => {
       };
     }
     if (!BrucellaValid) {
+      console.log("not valid");
       return {
         status: 402,
         message: "ברוצלה לא בתוקף",
