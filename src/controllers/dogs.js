@@ -1,15 +1,19 @@
 const { GetHisunValid } = require("../utils/hisunvalid");
-const { getdatafrommoagdb } = require("../utils/getdatafrommoagdb");
+//const { getdatafrommoagdb } = require("../utils/getdatafrommoagdb");
 const { db, rtdb } = require("../firebase/firebase");
-const moment = require("moment");
 
-const addDogToShow = async ({ ChipNum, Show }) => {
+const addDogToShow = async ({
+  //chipnum,
+  data,
+  Show,
+}) => {
   //ShowDate = moment(Date.now()).format("DD.MM.YYYY");
   //ShowDate = "25.11.2022";
   const docname = `${Show}`;
   try {
-    const data = await getdatafrommoagdb({ ChipNum });
+    //const data = await getdatafrommoagdb(ChipNum);
     const dog = data["AnimalDetails"][0];
+    const ChipNum = data["AnimalDetails"][0]["ChipNumber"];
     HisunDate = data["AnimalDetails"][0]["HisunDate"];
     IsValid = GetHisunValid(HisunDate);
     console.log(IsValid);
@@ -70,21 +74,4 @@ const addDogToShow = async ({ ChipNum, Show }) => {
   }
 };
 
-const getchipfromesp = async ({ chip }) => {
-  //upload the chip number to the realtime database
-  try {
-    await rtdb.ref("chip").set(chip);
-    return {
-      message: "chip number uploaded",
-      status: 201,
-    };
-  } catch (error) {
-    console.log(error);
-    return {
-      message: "chip number not uploaded",
-      status: 400,
-    };
-  }
-};
-
-module.exports = { addDogToShow, getchipfromesp };
+module.exports = { addDogToShow };
