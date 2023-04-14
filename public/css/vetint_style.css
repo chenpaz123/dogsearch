@@ -1,4 +1,4 @@
-@import "nav_style.css";
+@import "./nav_style.css";
 .jumbotron {
   min-height: 550px;
   background-image: repeating-linear-gradient(360deg, transparent, black),

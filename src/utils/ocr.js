@@ -26,9 +26,9 @@ const ReadText = async (imgfile, oem, psm) => {
   try {
     await worker.load();
     console.log("worker loaded");
-    await worker.loadLanguage("eng+osd");
+    await worker.loadLanguage("eng+osd+heb");
     console.log("language loaded");
-    await worker.initialize("eng+osd");
+    await worker.initialize("eng+osd+heb");
     console.log("worker initialized");
     await worker.setParameters({
       tessedit_ocr_engine_mode: oem_var,

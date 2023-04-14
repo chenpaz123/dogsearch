@@ -1,0 +1,12 @@
+@import "./index_style.css";
+.jumbotron {
+  min-height: 550px;
+  background-image: repeating-linear-gradient(180deg, transparent, black),
+    url("../img/goblets.jpg");
+  background-size: auto, cover;
+  background-attachment: scroll, fixed;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
