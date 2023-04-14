@@ -13,6 +13,12 @@ function fixdate(date) {
     "DD/MM/YY",
     "DD.MM.YY",
     "DD-MM-YY",
+    "YYYY/MM/DD",
+    "YYYY.MM.DD",
+    "YYYY-MM-DD",
+    "YY/MM/DD",
+    "YY.MM.DD",
+    "YY-MM-DD",
   ];
 
   for (let i = 0; i < datesformats.length; i++) {
