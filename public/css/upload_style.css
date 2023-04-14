@@ -1,0 +1,76 @@
+@import "./nav_style.css";
+
+.jumbotron {
+  min-height: 550px;
+  background-image: linear-gradient(360deg, #222, rgba(34, 34, 34, 0)),
+    url("https://uploads-ssl.webflow.com/64073eff0672ea5a62d4d364/6409f7ab13f6c83b9d57a24e_690829.jpg");
+  background-position: 0px 0px, 50% 0%;
+  background-size: auto, cover;
+  background-attachment: scroll, fixed;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.jum-heading {
+  width: 30%;
+  font-size: 60px;
+  text-align: left;
+}
+
+.jum-paragraph {
+  width: 30%;
+  text-align: left;
+}
+.picturepara {
+  width: 35%;
+  margin: 0 auto;
+}
+
+.footing {
+  min-height: 550px;
+  background-image: linear-gradient(360deg, #222, rgba(34, 34, 34, 0)),
+    url("https://uploads-ssl.webflow.com/64073eff0672ea5a62d4d364/640a3c841d7c97f9796325f9_1213725%20(2).jpg");
+  background-position: 0px 0px, 50% 0%;
+  background-size: auto, cover;
+
+  background-attachment: scroll, fixed;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0px;
+}
+.foot-heading {
+  width: 30%;
+  font-size: 60px;
+  text-align: left;
+}
+
+.foot-paragraph {
+  width: 30%;
+  text-align: left;
+}
+label {
+  margin-bottom: 5px;
+}
+.form-field {
+  margin-top: 10px;
+  max-width: 350px;
+}
+input[type="text"],
+input[type="date"] {
+  text-align: center;
+}
+
+select {
+  text-align: center;
+}
+
+.text-center {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}

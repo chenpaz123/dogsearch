@@ -4,84 +4,244 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dog Search</title>
+    <title>RexiChip</title>
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/dogdetails.css" />
   </head>
   <body>
-    <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a class="nav-link" href="index.html">
-          <span class="navbar-brand mb-0 h1">RexiChip</span>
+        <a class="navbar-brand" href="index.html">
+          <img
+            src="https://uploads-ssl.webflow.com/64073eff0672ea5a62d4d364/64074465f93ac38334419b0b_logo.png"
+            alt="Logo"
+            width="200"
+          />
         </a>
         <button
+          class="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
-          data-bs-target="#navbarnav"
-          aria-controls="navbarnav"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
           aria-expanded="false"
-          aria-label="Toggle nav"
-          class="navbar-toggler"
+          aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarnav">
+        <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">עמוד בית</a>
+              <a
+                class="nav-link nav-btn text-center d-flex align-items-center justify-content-center"
+                href="index.html"
+                >Home</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="vet-login.html">ממשק ווטרינר</a>
+              <a
+                class="nav-link nav-btn text-center d-flex align-items-center justify-content-center"
+                href="uploadfiles.html"
+              >
+                Upload <br />
+                Files
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="visitor-page.html">ממשק מבקר</a>
+              <a
+                class="nav-link nav-btn text-center d-flex align-items-center justify-content-center"
+                href="vet-interface.html"
+              >
+                Vet <br />
+                Interface
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="manager-login.html">ממשק מנהל</a>
+              <a
+                class="nav-link nav-btn text-center d-flex align-items-center justify-content-center"
+                href="manager-login.html"
+              >
+                Manager <br />
+                Interface
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact-us.html">צור קשר</a>
+              <a
+                class="nav-link nav-btn text-center d-flex align-items-center justify-content-center"
+                href="contact-us.html"
+              >
+                Contact <br />
+                Us
+              </a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
-    <h1 id="greeting">שלום</h1>
-    <br />
-    <h3 id="scan dog">סרוק את הכלב כעת</h3>
-    <br />
-    <div id="show-data">
-      <h3>שם הכלב</h3>
-      <p id="name"></p>
-      <h3>גזע הכלב</h3>
-      <p id="breed"></p>
-      <h3>צבע הכלב</h3>
-      <p id="color"></p>
-      <h3>מספר שבב</h3>
-      <p id="chip"></p>
-      <h3>תאריך חיסון כלבת</h3>
-      <p id="hisundate"></p>
-      <h3>תאריך בדיקת ברוצלה</h3>
-      <p id="brucelladate"></p>
-      <h3>האם כלבת בתוקף</h3>
-      <p id="kalevetvalid"></p>
-      <h3>האם ברוצלה בתוקף</h3>
-      <p id="brucellavalid"></p>
-      <button type="button" id="button2" class="btn-primary">
-        Scan New Dog
+    <!--create a modal to choose the show the same way in the uploadfiles.html-->
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Choose a show</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="d-flex justify-content-center">
+                    <form id="form">
+                      <div class="container">
+                        <div class="row">
+                          <div class="col-12">
+                            <h1 class="text-center">בחר תערוכה</h1>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-12">
+                            <div class="form-group">
+                              <select id="show-list" class="form-control">
+                                <option disabled selected>Select a Show</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                          <div class="col-12 center-content">
+                            <button
+                              type="submit"
+                              class="btn btn-primary"
+                              data-bs-dismiss="modal"
+                            >
+                              שלח
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="vetlogut">
+      <button type="button" id="logoutbtn" class="btn btn-danger">
+        Logout
       </button>
     </div>
 
+    <!-- Dog Details -->
+
+    <div class="dogdet text-center">
+      <div class="justify-content-center">
+        <h1 id="greeting">שלום</h1>
+        <br />
+        <h3 id="scan dog">סרוק את הכלב כעת</h3>
+        <div class="container" id="chooseshow">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="d-flex justify-content-center">
+                <button
+                  type="button"
+                  class="btn btn-primary btn-lg"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                >
+                  בחר תערוכה
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+        <div id="show-data">
+          <h3>שם הכלב</h3>
+          <p id="name"></p>
+          <h3>גזע הכלב</h3>
+          <p id="breed"></p>
+          <h3>צבע הכלב</h3>
+          <p id="color"></p>
+          <h3>מספר שבב</h3>
+          <p id="chip"></p>
+          <h3>תאריך חיסון כלבת</h3>
+          <p id="hisundate"></p>
+          <h3>תאריך בדיקת ברוצלה</h3>
+          <p id="brucelladate"></p>
+          <h3>האם כלבת בתוקף</h3>
+          <p id="kalevetvalid"></p>
+          <h3>האם ברוצלה בתוקף</h3>
+          <p id="brucellavalid"></p>
+          <button type="button" id="button2" class="btn-primary">
+            Scan New Dog
+          </button>
+        </div>
+      </div>
+    </div>
+    <footer class="bg-light mt-5 py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-3">
+            <img
+              src="https://uploads-ssl.webflow.com/64073eff0672ea5a62d4d364/64074465f93ac38334419b0b_logo.png"
+              alt="Logo"
+              width="200"
+            />
+          </div>
+          <div class="col-sm-9 d-flex justify-content-around">
+            <a href="https://facebook.com" target="_blank">
+              <img src="facebook_logo.png" alt="Facebook" width="50" />
+            </a>
+            <a href="https://twitter.com" target="_blank">
+              <img src="twitter_logo.png" alt="Twitter" width="50" />
+            </a>
+            <a href="https://instagram.com" target="_blank">
+              <img src="instagram_logo.png" alt="Instagram" width="50" />
+            </a>
+            <a href="https://linkedin.com" target="_blank">
+              <img src="linkedin_logo.png" alt="LinkedIn" width="50" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="../scripts/dogdetails.js" type="module"></script>
     <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
       crossorigin="anonymous"
     ></script>
-    <script type="module" src="../scripts/script.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

@@ -10,12 +10,16 @@
     }
 }*/
 
+document.addEventListener("DOMContentLoaded", function () {
+  checkvetloggedin();
+});
 //initiate checkPassword function when the form is submitted
 document
   .getElementById("login-form")
   .addEventListener("submit", function (event) {
     event.preventDefault();
-    localStorage.clear();
+    localStorage.removeItem("vetfirstname");
+    localStorage.removeItem("vetlastname");
     checkPassword();
   });
 var modal = document.getElementById("myModal");
@@ -51,6 +55,7 @@ const checkPassword = async () => {
     //save the vet's name in the local storage
     localStorage.setItem("vetfirstname", vetfirstname);
     localStorage.setItem("vetlastname", vetlastname);
+    localStorage.setItem("vetloggedin", true);
 
     console.log(vetfirstname);
     console.log(vetlastname);
@@ -58,7 +63,7 @@ const checkPassword = async () => {
     tempvetfirstname = vetfirstname;
     tempvetlastname = vetlastname;
     if (licensenumber == password) {
-      window.location.href = "../pages/options-page.html";
+      window.location.href = "../pages/dog-details.html";
     }
   } catch (error) {
     console.log(error);
@@ -66,15 +71,10 @@ const checkPassword = async () => {
   }
 };
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function () {
-  window.location.reload();
-};
-
-window.onclick = function (event) {
-  if (event.target == modal) {
-    window.location.reload();
+//check vet logged in
+const checkvetloggedin = () => {
+  const vetloggedin = localStorage.getItem("vetloggedin");
+  if (vetloggedin) {
+    window.location.href = "../pages/dog-details.html";
   }
 };
-
-//export vet name and license number to script.js

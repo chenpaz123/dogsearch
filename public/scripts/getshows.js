@@ -8,10 +8,13 @@ const getShows = async () => {
     const showList = document.querySelector("#show-list");
     showList.innerHTML = "";
     shows.forEach((show) => {
-      if (shows.length == 0) {
+      if (shows == 0) {
         showList.innerHTML += "לא קיימות תערוכות";
       } else {
-        showList.innerHTML += `<option value="${show}">${show}</option>`;
+        console.log(show.name);
+        console.log(show.date);
+        //add the show in this format showname - showdate
+        showList.innerHTML += `<option value="${show.name} - ${show.date}">${show.name} - ${show.date}</option>`;
       }
     });
   } catch (error) {

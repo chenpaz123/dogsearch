@@ -1,0 +1,54 @@
+@import "nav_style.css";
+.jumbotron {
+  min-height: 550px;
+  background-image: repeating-linear-gradient(180deg, transparent, transparent),
+    url("../img/pupp.JPG");
+  background-size: auto, cover;
+  background-attachment: scroll, fixed;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h2 {
+  font-size: 50px;
+  text-align: center;
+}
+.eff-section {
+  min-height: 550px;
+  background-image: url("../img/karma.png"),
+    linear-gradient(180deg, rgba(34, 34, 34, 0.17), #222);
+  background-position: 80% 0%, 0px 0px;
+  background-size: cover, auto;
+  background-repeat: no-repeat;
+  color: white;
+}
+
+.eff-heading {
+  width: 30%;
+  font-size: 45px;
+  text-align: center;
+  margin-right: 5%;
+}
+
+.eff-paragraph {
+  width: 20%;
+  margin-bottom: 25px;
+  font-size: 20px;
+  margin-right: 10%;
+  text-align: center;
+}
+
+h2 {
+  font-size: 40px;
+  text-align: center;
+}
+
+p {
+  font-size: 20px;
+  text-align: left;
+}
+body {
+  overflow-x: hidden;
+}

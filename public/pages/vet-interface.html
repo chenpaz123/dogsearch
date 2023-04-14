@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RexiChip</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../css/vetint.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">
+          <img
+            src="https://uploads-ssl.webflow.com/64073eff0672ea5a62d4d364/64074465f93ac38334419b0b_logo.png"
+            alt="Logo"
+            width="200"
+          />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a
+                class="nav-link nav-btn text-center d-flex align-items-center justify-content-center"
+                href="index.html"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link nav-btn text-center d-flex align-items-center justify-content-center"
+                href="uploadfiles.html"
+              >
+                Upload <br />
+                Files
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link nav-btn text-center d-flex align-items-center justify-content-center"
+                href="vet-interface.html"
+              >
+                Vet <br />
+                Interface
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link nav-btn text-center d-flex align-items-center justify-content-center"
+                href="manager-login.html"
+              >
+                Manager <br />
+                Interface
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link nav-btn text-center d-flex align-items-center justify-content-center"
+                href="contact-us.html"
+              >
+                Contact <br />
+                Us
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- End of Navbar -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1 class="display-4 jum-heading">Vet login</h1>
+        <p class="lead jum-paragraph">
+          Dear Vet please enter your license number to login
+        </p>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-auto mt-5 form text-center login-form">
+          <form id="login-form">
+            <h2 class="text-center">כניסת ווטרינר</h2>
+            <p class="text-center">הכנס את מספר הרישיון שלך</p>
+            <div class="form-group mt-2 mb-3">
+              <input
+                type="password"
+                name="license number"
+                class="form-control"
+                placeholder="מספר רישיון"
+                id="license number"
+                required
+              />
+            </div>
+            <div class="form-group w-25" style="margin: auto">
+              <input
+                type="submit"
+                name="login"
+                class="btn btn-dark"
+                value="Login"
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center mt-2">
+      <div class="col text-center">
+        <h4>Thank you for using our system</h4>
+        <p class="text-center mx-auto" style="width: 30%">
+          and helping us to keep our pets safe and healthy
+        </p>
+      </div>
+    </div>
+    <footer class="bg-light mt-5 py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-3">
+            <img
+              src="https://uploads-ssl.webflow.com/64073eff0672ea5a62d4d364/64074465f93ac38334419b0b_logo.png"
+              alt="Logo"
+              width="200"
+            />
+          </div>
+          <div class="col-sm-9 d-flex justify-content-around">
+            <a href="https://facebook.com" target="_blank">
+              <img src="facebook_logo.png" alt="Facebook" width="50" />
+            </a>
+            <a href="https://twitter.com" target="_blank">
+              <img src="twitter_logo.png" alt="Twitter" width="50" />
+            </a>
+            <a href="https://instagram.com" target="_blank">
+              <img src="instagram_logo.png" alt="Instagram" width="50" />
+            </a>
+            <a href="https://linkedin.com" target="_blank">
+              <img src="linkedin_logo.png" alt="LinkedIn" width="50" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="../scripts/vet-login-script.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

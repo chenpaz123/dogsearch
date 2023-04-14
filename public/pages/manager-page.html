@@ -1,85 +1,404 @@
-<!--crate a page in the same way as the other pages in the public folder that has 3 options: create show, update show and delete show-->
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>RexiChip</title>
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/index_style.css" />
   </head>
   <body>
-    <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a class="nav-link" href="index.html">
-          <span class="navbar-brand mb-0 h1">RexiChip</span>
+        <a class="navbar-brand" href="index.html">
+          <img
+            src="https://uploads-ssl.webflow.com/64073eff0672ea5a62d4d364/64074465f93ac38334419b0b_logo.png"
+            alt="Logo"
+            width="200"
+          />
         </a>
         <button
+          class="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
-          data-bs-target="#navbarnav"
-          aria-controls="navbarnav"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
           aria-expanded="false"
-          aria-label="Toggle nav"
-          class="navbar-toggler"
+          aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarnav">
+        <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">עמוד בית</a>
+              <a
+                class="nav-link nav-btn text-center d-flex align-items-center justify-content-center"
+                href="index.html"
+                >Home</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="vet-login.html">ממשק ווטרינר</a>
+              <a
+                class="nav-link nav-btn text-center d-flex align-items-center justify-content-center"
+                href="uploadfiles.html"
+              >
+                Upload <br />
+                Files
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="visitor-page.html">ממשק מבקר</a>
+              <a
+                class="nav-link nav-btn text-center d-flex align-items-center justify-content-center"
+                href="vet-interface.html"
+              >
+                Vet <br />
+                Interface
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="manager-login.html">ממשק מנהל</a>
+              <a
+                class="nav-link nav-btn text-center d-flex align-items-center justify-content-center"
+                href="manager-login.html"
+              >
+                Manager <br />
+                Interface
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact-us.html">צור קשר</a>
+              <a
+                class="nav-link nav-btn text-center d-flex align-items-center justify-content-center"
+                href="contact-us.html"
+              >
+                Contact <br />
+                Us
+              </a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
 
-    <!--crate a page in the same way as the other pages in the public folder that has 3 options: create show, update show and delete show-->
+    <!--add logout botton that fires a logut function-->
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <h1>ברוכים הבאים לממשק המנהל</h1>
+          <button type="button" id="logout" class="btn btn-danger">
+            Logout
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!--take create-show.html, update-show.html and delete-show.html and create them here as modals-->
+
+    <!-- Manager Interface -->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h1 class="text-center">Manager Interface</h1>
         </div>
       </div>
       <div class="row">
         <div class="col-12">
-          <h2>בחרו את הפעולה הרצויה</h2>
+          <h2 class="text-center">Shows</h2>
         </div>
       </div>
       <div class="row">
         <div class="col-12">
-          <a href="create-show.html" style="margin-bottom: 10px;" class="btn btn-primary">צור תערוכה</a>
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#createShowModal"
+          >
+            Create Show
+          </button>
         </div>
       </div>
       <div class="row">
         <div class="col-12">
-          <a href="update-show.html" style="margin-bottom: 10px;" class="btn btn-primary">עדכן תערוכה</a>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Show Name</th>
+                <th scope="col">Show Date</th>
+                <th scope="col">Show Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Show Name</th>
+                <td>Show Date</td>
+                <td>Show Description</td>
+
+                <td>
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#updateShowModal"
+                  >
+                    Update
+                  </button>
+                </td>
+                <td>
+                  <button
+                    type="button"
+                    class="btn btn-danger"
+                    data-bs-toggle="modal"
+                    data-bs-target="#deleteShowModal"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
-      <div class="row">
-        <div class="col-12">
-          <a href="delete-show.html" style="margin-bottom: 10px;" class="btn btn-primary">מחק תערוכה</a>
+
+      <!-- Create Show Modal -->
+      <div
+        class="modal fade"
+        id="createShowModal"
+        tabindex="-1"
+        aria-labelledby="createShowModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="createShowModalLabel">Create Show</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="mb-3">
+                  <label for="createshowName111" class="col-form-label"
+                    >Show Name:</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="createshowName111"
+                    placeholder="Show Name"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="createshowDate" class="col-form-label"
+                    >Show Date:</label
+                  >
+                  <input
+                    type="date"
+                    class="form-control"
+                    id="createshowDate"
+                    placeholder="Show Date"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="createshowDescription" class="col-form-label"
+                    >Show Description:</label
+                  >
+                  <textarea
+                    class="form-control"
+                    id="createshowDescription"
+                    placeholder="Show Description"
+                  ></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                id="createShowButton"
+                class="btn btn-primary"
+              >
+                Create Show
+              </button>
+            </div>
+          </div>
         </div>
       </div>
-</body>
+
+      <!-- Update Show Modal -->
+
+      <div
+        class="modal fade"
+        id="updateShowModal"
+        tabindex="-1"
+        aria-labelledby="updateShowModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="updateShowModalLabel">Update Show</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="mb-3">
+                  <label for="updateshowName" class="col-form-label"
+                    >Show Name:</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="updateshowName"
+                    placeholder="Show Name"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="updateshowDate" class="col-form-label"
+                    >Show Date:</label
+                  >
+                  <input
+                    type="date"
+                    class="form-control"
+                    id="updateshowDate"
+                    placeholder="Show Date"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="updateshowDescription" class="col-form-label"
+                    >Show Description:</label
+                  >
+                  <textarea
+                    class="form-control"
+                    id="updateshowDescription"
+                    placeholder="Show Description"
+                  ></textarea>
+                </div>
+              </form>
+              <p class="">
+                <strong
+                  >Note that all the data of the show will be DELETED</strong
+                >
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                id="updateShowButton"
+                class="btn btn-primary"
+              >
+                Update Show
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Delete Show Modal -->
+
+      <div
+        class="modal fade"
+        id="deleteShowModal"
+        tabindex="-1"
+        aria-labelledby="deleteShowModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="deleteShowModalLabel">Delete Show</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <p>Are you sure you want to delete this show?</p>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                id="deleteShowButtonsure"
+                class="btn btn-danger"
+              >
+                Delete Show
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+
+    <footer class="bg-light mt-5 py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-3">
+            <img
+              src="https://uploads-ssl.webflow.com/64073eff0672ea5a62d4d364/64074465f93ac38334419b0b_logo.png"
+              alt="Logo"
+              width="200"
+            />
+          </div>
+          <div class="col-sm-9 d-flex justify-content-around">
+            <a href="https://facebook.com" target="_blank">
+              <img src="facebook_logo.png" alt="Facebook" width="50" />
+            </a>
+            <a href="https://twitter.com" target="_blank">
+              <img src="twitter_logo.png" alt="Twitter" width="50" />
+            </a>
+            <a href="https://instagram.com" target="_blank">
+              <img src="instagram_logo.png" alt="Instagram" width="50" />
+            </a>
+            <a href="https://linkedin.com" target="_blank">
+              <img src="linkedin_logo.png" alt="LinkedIn" width="50" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="../scripts/manager-page.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>

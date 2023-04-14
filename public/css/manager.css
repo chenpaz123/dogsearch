@@ -1,0 +1,30 @@
+@import "nav_style.css";
+.jumbotron {
+  min-height: 550px;
+  background-image: repeating-linear-gradient(360deg, transparent, black),
+    url("../img/show3.JPG");
+  background-size: auto, cover;
+  background-attachment: scroll, fixed;
+  color: white;
+  justify-content: center;
+  align-items: center;
+}
+.jum-heading {
+  font-size: 50px;
+  text-align: center;
+}
+
+.jum-paragraph {
+  text-align: center;
+}
+input[type="password"],
+input[type="email"] {
+  text-align: center;
+}
+label {
+  margin-bottom: 5px;
+}
+.form-field {
+  margin-top: 10px;
+  max-width: 400px;
+}

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RexiChip</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../css/upload_style.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">
+          <img
+            src="https://uploads-ssl.webflow.com/64073eff0672ea5a62d4d364/64074465f93ac38334419b0b_logo.png"
+            alt="Logo"
+            width="200"
+          />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a
+                class="nav-link nav-btn text-center d-flex align-items-center justify-content-center"
+                href="index.html"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link nav-btn text-center d-flex align-items-center justify-content-center"
+                href="uploadfiles.html"
+              >
+                Upload <br />
+                Files
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link nav-btn text-center d-flex align-items-center justify-content-center"
+                href="vet-interface.html"
+              >
+                Vet <br />
+                Interface
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link nav-btn text-center d-flex align-items-center justify-content-center"
+                href="manager-login.html"
+              >
+                Manager <br />
+                Interface
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link nav-btn text-center d-flex align-items-center justify-content-center"
+                href="contact-us.html"
+              >
+                Contact <br />
+                Us
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="jumbotron">
+      <div class="container">
+        <h1 class="display-4 jum-heading">Upload Your Files Quickly</h1>
+        <p class="lead jum-paragraph">
+          upload your dog's vaccination and Brucella test documents quickly and
+          easily through our user-friendly interface.
+        </p>
+      </div>
+    </div>
+    <!-- create a form with selection chip number(15 digits) and brucella test date and a place to upload a file-->
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-auto mt-5 form text-center">
+          <form
+            onsubmit="onFormSubmit();"
+            enctype="multipart/form-data"
+            id="form"
+          >
+            <div class="form-group text-center form-field">
+              <label for="show-list">בחר את התעורכה אליה תרצה להגיע</label>
+              <select id="show-list" class="form-control">
+                <option disabled selected>Select a Show</option>
+              </select>
+            </div>
+            <div class="form-group text-center form-field">
+              <label for="chipnum">מספר שבב</label>
+              <input
+                required
+                type="text"
+                class="form-control"
+                id="chipnum"
+                name="chipnum"
+                placeholder="הכנס מספר שבב"
+              />
+            </div>
+            <div class="form-group text-center form-field">
+              <label for="brucelladate">תאריך בדיקת ברוצלה</label>
+              <input
+                required
+                type="date"
+                class="form-control"
+                id="brucelladate"
+                name="brucelladate"
+                placeholder="הכנס תאריך בדיקת ברוצלה"
+              />
+            </div>
+            <div class="form-group text-center form-field">
+              <label for="file">העלה מסמך ברוצלה</label>
+              <input
+                required
+                type="file"
+                class="form-control-file"
+                id="file"
+                name="file"
+                accept=".jpg, .jpeg, .png"
+                placeholder="העלה מסמך ברוצלה"
+              />
+            </div>
+            <div class="form-group d-flex justify-content-center">
+              <button type="button" class="btn btn-dark" id="button1">
+                שלח
+              </button>
+            </div>
+            <div class="modal" tabindex="-1" id="loading-modal">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-body text-center">
+                    <div class="spinner-border" role="status">
+                      <span class="sr-only"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="row justify-content-center mt-2">
+        <div class="col text-center">
+          <img
+            src="https://uploads-ssl.webflow.com/64073eff0672ea5a62d4d364/64073eff0672eadfd0d4d3ae_verified.svg"
+            alt="Warranty Icon"
+            class="image"
+            style="height: 75px"
+          />
+          <h4>Saves time in waiting lines</h4>
+          <p class="text-center mx-auto" style="width: 40%">
+            by uploading your files here - you choose to take a part in a fast
+            waiting line for you and your dog!
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="footing mt-5">
+      <div class="container">
+        <h1 class="display-4 foot-heading">Need Help?</h1>
+        <p class="lead foot-paragraph">
+          Need help or assistance? Our team is standing by to make sure you get
+          the help you need - we're ready to help!
+        </p>
+        <a class="btn btn-dark btn-sm" href="contactus.html" role="button"
+          >CONTACT US</a
+        >
+      </div>
+    </div>
+
+    <footer class="bg-light mt-5 py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-3">
+            <img
+              src="https://uploads-ssl.webflow.com/64073eff0672ea5a62d4d364/64074465f93ac38334419b0b_logo.png"
+              alt="Logo"
+              width="200"
+            />
+          </div>
+          <div class="col-sm-9 d-flex justify-content-around">
+            <a href="https://facebook.com" target="_blank">
+              <img src="facebook_logo.png" alt="Facebook" width="50" />
+            </a>
+            <a href="https://twitter.com" target="_blank">
+              <img src="twitter_logo.png" alt="Twitter" width="50" />
+            </a>
+            <a href="https://instagram.com" target="_blank">
+              <img src="instagram_logo.png" alt="Instagram" width="50" />
+            </a>
+            <a href="https://linkedin.com" target="_blank">
+              <img src="linkedin_logo.png" alt="LinkedIn" width="50" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="../scripts/newvisitor.js" type="module"></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+@import "nav_style.css";
+#button2chip {
+  background-color: #4caf50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#button2:hover {
+  background-color: #45a049;
+}
+.center-content {
+  display: flex;
+  justify-content: center;
+}
+.dogdet {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 const onFormSubmit = async () => {
+  document.getElementById("loading-modal").classList.add("show");
+  document.getElementById("loading-modal").style.display = "block";
   console.log("in onFormSubmit");
   console.log(document.getElementById("show-list").value);
   var show = document.getElementById("show-list").value;
@@ -41,8 +43,14 @@ const sendData = async (showdate, show, chipnum, brucelladate, image) => {
     console.log("after fetch");
     const data = await res.json();
     console.log("after json");
+    document.getElementById("loading-modal").classList.remove("show");
+    document.getElementById("loading-modal").style.display = "none";
     console.log(data);
-    if (data["date"] == brucelladate && data["chip"] == chipnum) {
+    if (
+      data["date"] == brucelladate &&
+      data["chip"] == chipnum &&
+      data["status"] == 201
+    ) {
       try {
         const res2 = await fetch("http://localhost:3000/brucellafiresotre", {
           method: "POST",
@@ -65,6 +73,8 @@ const sendData = async (showdate, show, chipnum, brucelladate, image) => {
         alert(`brucella not added because of error: ${error}`);
       }
     } else {
+      console.log("in brucelladate else");
+
       if (data["status"] == 402) {
         alert("ברוצלה לא בתוקף");
         location.reload();
@@ -93,7 +103,6 @@ const sendData = async (showdate, show, chipnum, brucelladate, image) => {
           data["stutus"] !== 402 &&
           data["stutus"] !== 403
         ) {
-          console.log("in brucelladate else");
           console.log(brucelladate);
           alert("תאריך ברוצלה לא תואם");
           location.reload();

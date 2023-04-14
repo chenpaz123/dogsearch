@@ -1,0 +1,23 @@
+.nav-btn {
+  height: 100px;
+  width: 100px;
+  background-image: url("https://uploads-ssl.webflow.com/64073eff0672ea5a62d4d364/64074f5683d9814117b28b8e_f%2Co2.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: white;
+  font-size: 15px;
+}
+.nav-btn:hover {
+  background-image: url("https://uploads-ssl.webflow.com/64073eff0672ea5a62d4d364/64074f5683d9814117b28b8e_f%2Co2.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: white;
+}
+.nav-item {
+  margin-left: 150px;
+}
+.nav-link:focus {
+  color: gray !important;
+}
