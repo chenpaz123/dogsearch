@@ -1,5 +1,6 @@
+const moment = require("moment");
+
 function fixdate(date) {
-  const moment = require("moment");
   const datesformats = [
     "DD/MM/YYYY",
     "DD.MM.YYYY",
@@ -30,7 +31,6 @@ function fixdate(date) {
 }
 
 function fixdatetodot(date) {
-  const moment = require("moment");
   const datesformats = [
     "DD/MM/YYYY",
     "DD.MM.YYYY",
