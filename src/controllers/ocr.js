@@ -1,4 +1,9 @@
-const { extractDates, extractChip, ReadText } = require("../utils/ocr");
+const {
+  extractDates,
+  extractChip,
+  extractResult,
+  ReadText,
+} = require("../utils/ocr.js");
 
 //const image =
 //"C:\\Users\\chenp\\OneDrive\\Documents\\Project\\projecto\\test.jpg";
@@ -8,6 +13,8 @@ const ocr = async (image) => {
   const text = await ReadText(image);
   const dates = extractDates(text);
   const chip = extractChip(text);
+  const result = extractResult(text);
+  console.log("result: ", result);
   if (chip == null && dates == null) {
     return {
       status: 400,
@@ -15,6 +22,7 @@ const ocr = async (image) => {
     };
   }
   var date, chip1;
+  console.log("dates: ", dates);
   if (dates !== null) {
     date = dates[dates.length - 1];
     console.log("date: ", date);
@@ -22,7 +30,7 @@ const ocr = async (image) => {
     console.log("no date found");
     return {
       message: "no date found",
-      status: 400,
+      status: 403,
       chip: chip[0],
     };
   }
@@ -33,8 +41,18 @@ const ocr = async (image) => {
     console.log("no chip found");
     return {
       message: "no chip found",
-      status: 400,
-      date: dates[0],
+      status: 401,
+      date: date,
+    };
+  }
+  if (result == null) {
+    console.log("result: ", result);
+    return {
+      message: "הבדיקה לא שלילית",
+      status: 407,
+      date: date,
+      chip: chip1,
+      result: false,
     };
   }
   console.log("ocr ended");
@@ -43,6 +61,7 @@ const ocr = async (image) => {
     status: 200,
     date: date,
     chip: chip1,
+    result: true,
   };
 };
 

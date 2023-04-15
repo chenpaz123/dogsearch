@@ -6,8 +6,8 @@ const router = express.Router();
 router.post("/visitordata", async (req, res) => {
   const response = await getvisitordata({
     showdate: req.body.showdate,
-    kennelclubname: req.body.kennelclubname,
     image: req.body.image,
+    chipnum: req.body.chipnum,
   });
   res.send(response);
 });

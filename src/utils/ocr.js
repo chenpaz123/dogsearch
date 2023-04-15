@@ -13,6 +13,13 @@ const extractChip = (text) => {
   return chip;
 };
 
+const extracResult = (text) => {
+  // Define a regex pattern to match the words "שלילי" or "negative"
+  const regex = /(Negative|NEGATIVE|negative|שלילי)/gi;
+  const result = text.match(regex);
+  return result;
+};
+
 const { createWorker } = require("tesseract.js");
 
 const worker = createWorker({
@@ -41,6 +48,7 @@ const ReadText = async (imgfile, oem, psm) => {
     } = await worker.recognize(imgfile, {
       // tessedit_char_whitelist: '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
     });
+    console.log(text);
     console.log("worker recognized");
     return text;
   } catch (e) {
@@ -50,4 +58,4 @@ const ReadText = async (imgfile, oem, psm) => {
   }
 };
 
-module.exports = { extractDates, extractChip, ReadText };
+module.exports = { extractDates, extractChip, extracResult, ReadText };

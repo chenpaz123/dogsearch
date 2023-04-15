@@ -44,6 +44,9 @@ const checkPassword = async () => {
     const data = await response.json();
     console.log(data);
     console.log(data.result.records[0]);
+    if (data.result.records.length == 0) {
+      throw new Error("משתמש לא קיים");
+    }
     const newdata = data.result.records[0];
     console.log(newdata);
     const {
@@ -67,7 +70,7 @@ const checkPassword = async () => {
     }
   } catch (error) {
     console.log(error);
-    modal.style.display = "block";
+    alert(error);
   }
 };
 

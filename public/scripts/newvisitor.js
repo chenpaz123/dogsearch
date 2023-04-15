@@ -29,12 +29,12 @@ const sendData = async (showdate, show, chipnum, brucelladate, image) => {
   try {
     console.log("in try");
 
-    //todo: check this fucking fetch that doesn't work
     const res = await fetch("http://localhost:3000/visitordata", {
       method: "POST",
       body: JSON.stringify({
         showdate: showdate,
         image: image,
+        chipnum: chipnum,
       }),
       headers: {
         "Content-Type": "application/json",
@@ -46,68 +46,87 @@ const sendData = async (showdate, show, chipnum, brucelladate, image) => {
     document.getElementById("loading-modal").classList.remove("show");
     document.getElementById("loading-modal").style.display = "none";
     console.log(data);
-    if (
-      data["date"] == brucelladate &&
-      data["chip"] == chipnum &&
-      data["status"] == 201
-    ) {
-      try {
-        const res2 = await fetch("http://localhost:3000/brucellafiresotre", {
-          method: "POST",
-          body: JSON.stringify({
-            show: show,
-            chipnum: chipnum,
-            date: brucelladate,
-          }),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-        const data2 = await res2.json();
-        console.log(data2);
-        if (data2["status"] == 201) {
-          alert("ברוצלה נוספה בהצלחה");
-        }
-      } catch (error) {
-        console.log(error);
-        alert(`brucella not added because of error: ${error}`);
-      }
-    } else {
-      console.log("in brucelladate else");
 
-      if (data["status"] == 402) {
+    switch (data["status"]) {
+      case 201:
+        if (data["date"] == brucelladate && data["chip"] == chipnum) {
+          try {
+            const res2 = await fetch(
+              "http://localhost:3000/brucellafiresotre",
+              {
+                method: "POST",
+                body: JSON.stringify({
+                  show: show,
+                  chipnum: chipnum,
+                  date: brucelladate,
+                }),
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              }
+            );
+            const data2 = await res2.json();
+            console.log(data2);
+            if (data2["status"] == 201) {
+              alert("ברוצלה נוספה בהצלחה");
+            }
+          } catch (error) {
+            console.log(error);
+            alert(`brucella not added because of error: ${error}`);
+          }
+        } else {
+          if (data["chip"] !== chipnum && data["status"] !== 401) {
+            console.log("in chipnum else");
+            console.log(data["chip"]);
+            console.log(chipnum);
+            alert("מספר שבב לא תואם");
+            location.reload();
+          }
+          if (
+            data["date"] !== brucelladate &&
+            data["status"] !== 402 &&
+            data["status"] !== 403
+          ) {
+            console.log(brucelladate);
+            alert("תאריך ברוצלה לא תואם");
+            location.reload();
+          }
+        }
+        break;
+
+      case 402:
         alert("ברוצלה לא בתוקף");
         location.reload();
-      } else {
-        if (data["status"] == 403) {
-          alert("אין תאריך ברוצלה");
-          location.reload();
-        }
-        if (data["status"] == 401) {
-          alert("אין מספר שבב");
-          location.reload();
-        }
-        if (data["status"] == 405) {
-          alert("אין תמונה");
-          location.reload();
-        }
-        if (data["chip"] !== chipnum && data["stutus"] !== 401) {
-          console.log("in chipnum else");
-          console.log(data["chip"]);
-          console.log(chipnum);
-          alert("מספר שבב לא תואם");
-          location.reload();
-        }
-        if (
-          data["date"] !== brucelladate &&
-          data["stutus"] !== 402 &&
-          data["stutus"] !== 403
-        ) {
-          console.log(brucelladate);
-          alert("תאריך ברוצלה לא תואם");
-          location.reload();
-        }
-      }
+        break;
+
+      case 403:
+        alert("אין תאריך ברוצלה");
+        location.reload();
+        break;
+
+      case 401:
+        alert("אין מספר שבב");
+        location.reload();
+        break;
+
+      case 405:
+        alert("אין תמונה");
+        location.reload();
+        break;
+
+      case 406:
+        alert("מספר שבב לא תואם");
+        location.reload();
+        break;
+      case 407:
+        alert("ברוצלה לא שלילית");
+        location.reload();
+        break;
+
+      default:
+        alert("שגיאה בהוספת ברוצלה");
+        location.reload();
+        break;
     }
   } catch (error) {
     console.log("in catch");

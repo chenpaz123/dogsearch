@@ -1,32 +1,33 @@
+// Import required modules
 const { GetHisunValid } = require("../utils/hisunvalid");
-//const { getdatafrommoagdb } = require("../utils/getdatafrommoagdb");
-const { db, rtdb } = require("../firebase/firebase");
+const { db } = require("../firebase/firebase");
 
+// Function to add a dog to a show
 const addDogToShow = async ({
-  //chipnum,
-  data,
-  Show,
+  data, //dog data
+  Show, // Show to add the dog to
 }) => {
-  //ShowDate = moment(Date.now()).format("DD.MM.YYYY");
-  //ShowDate = "25.11.2022";
   const docname = `${Show}`;
+  // Extract dog information from the data object
   try {
-    //const data = await getdatafrommoagdb(ChipNum);
-    const dog = data["AnimalDetails"][0];
-    const ChipNum = data["AnimalDetails"][0]["ChipNumber"];
-    HisunDate = data["AnimalDetails"][0]["HisunDate"];
-    IsValid = GetHisunValid(HisunDate);
+    const dog = data["AnimalDetails"][0]; //dog data
+    const ChipNum = data["AnimalDetails"][0]["ChipNumber"]; //chip number
+    HisunDate = data["AnimalDetails"][0]["HisunDate"]; // Kalevet hisun date
+    IsValid = GetHisunValid(HisunDate); //check if the Kalevet is valid
     console.log(IsValid);
     console.log(dog);
 
-    //if the brucella field is exists in the chipnum document add the dog to the dogs collection inside the shows collection
+    // Create a reference to the dog document in the database
     const docRef = db
       .collection("shows")
       .doc(docname)
       .collection("dogs")
       .doc(String(ChipNum));
+
+    // Retrieve the dog document from the database
     const doc = await docRef.get();
-    //add dog to the dogs collection inside the shows collection
+    // If the Kalevet is valid and the dog document exists in the database, 
+    //update the dog information
     if (IsValid && doc.exists) {
       await db
         .collection("shows")
@@ -54,6 +55,7 @@ const addDogToShow = async ({
     }
   } catch (error) {
     console.log(error);
+    // Handle error scenarios
     if (error == "TypeError: Failed to fetch") {
       return {
         KalevetValid: IsValid,
@@ -75,3 +77,7 @@ const addDogToShow = async ({
 };
 
 module.exports = { addDogToShow };
+
+//const { getdatafrommoagdb } = require("../utils/getdatafrommoagdb");
+//chipnum, in pararms
+//const data = await getdatafrommoagdb(ChipNum); inttry
