@@ -1,3 +1,10 @@
+/**
+ * Extracts dates from a given text string.
+ *
+ * @function extractDates
+ * @param {string} text - The input text.
+ * @returns {Array<string>} An array of date strings.
+ */
 const extractDates = (text) => {
   //regex to match dates in the format dd/mm/yyyy or dd.mm.yyyy
   const regex = /(\d{1,2}\/\d{1,2}\/\d{4})|(\d{1,2}\.\d{1,2}\.\d{4})/g;
@@ -5,15 +12,27 @@ const extractDates = (text) => {
   return dates;
 };
 
-// extract the chip number from the text
+/**
+ * Extracts a 15-digit chip number from a given text string.
+ *
+ * @function extractChip
+ * @param {string} text - The input text.
+ * @returns {Array<string>} An array of chip numbers.
+ */
 const extractChip = (text) => {
   // chip number 15 digits long
   const regex = /(\d{15})/g;
   const chip = text.match(regex);
   return chip;
 };
-
-const extracResult = (text) => {
+/**
+ * Extracts negative results in different languages from a given text string.
+ *
+ * @function extractResult
+ * @param {string} text - The input text.
+ * @returns {Array<string>} An array of strings containing negative results.
+ */
+const extractResult = (text) => {
   // Define a regex pattern to match the words "שלילי" or "negative"
   const regex = /(Negative|NEGATIVE|negative|שלילי)/gi;
   const result = text.match(regex);
@@ -25,7 +44,16 @@ const { createWorker } = require("tesseract.js");
 const worker = createWorker({
   //   logger: m => console.log(m)
 });
-
+/**
+ * Reads the text from an image file using Tesseract.js.
+ *
+ * @async
+ * @function ReadText
+ * @param {Buffer} imgfile - The input image file.
+ * @param {number} [oem=2] - The OCR Engine mode.
+ * @param {number} [psm=3] - The page segmentation mode.
+ * @returns {Promise<string>} A promise that resolves to the extracted text.
+ */
 const ReadText = async (imgfile, oem, psm) => {
   const oem_var = oem || 2;
   const psm_var = psm || 3;
@@ -58,4 +86,4 @@ const ReadText = async (imgfile, oem, psm) => {
   }
 };
 
-module.exports = { extractDates, extractChip, extracResult, ReadText };
+module.exports = { extractDates, extractChip, extractResult, ReadText };

@@ -1,4 +1,11 @@
 const moment = require("moment");
+/**
+ * Converts a date string to the format "DD/MM/YYYY".
+ *
+ * @function fixdate
+ * @param {string} date - The input date string in various formats.
+ * @returns {string} The formatted date string in "DD/MM/YYYY" format.
+ */
 
 function fixdate(date) {
   const datesformats = [
@@ -29,7 +36,13 @@ function fixdate(date) {
     }
   }
 }
-
+/**
+ * Converts a date string to the format "DD.MM.YYYY".
+ *
+ * @function fixdatetodot
+ * @param {string} date - The input date string in various formats.
+ * @returns {string} The formatted date string in "DD.MM.YYYY" format.
+ */
 function fixdatetodot(date) {
   const datesformats = [
     "DD/MM/YYYY",

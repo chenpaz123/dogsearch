@@ -176,7 +176,7 @@ createShowButton.addEventListener(
   "click",
   async function createShowAndCloseModal() {
     const show = {
-      KenelClubName: document.getElementById("createshowName111").value,
+      showName: document.getElementById("createshowName111").value,
       date: document.getElementById("createshowDate").value,
       desc: document.getElementById("createshowDescription").value,
     };

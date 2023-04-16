@@ -2,7 +2,22 @@
 const { GetHisunValid } = require("../utils/hisunvalid");
 const { db } = require("../firebase/firebase");
 
-// Function to add a dog to a show
+/**
+ * The addDogToShow function adds a dog to a specific show in the database if the
+ * dog's Kalevet and Brucella tests are valid.
+ *
+ * @param {Object} data - The dog data.
+ * @param {string} Show - The name of the show.
+ * @returns {Object} An object containing the following properties:
+ *  - dog: {Object} The dog data.
+ *  - KalevetValid: {boolean} A boolean value indicating if the Kalevet test is valid.
+ *  - brucelladate: {string} The Brucella test date.
+ *  - BrucellaValid: {boolean} A boolean value indicating if the Brucella test is valid.
+ *  - status: {number} A status code indicating the success or failure of the operation.
+ *  - message: {string} A description of the status.
+ *
+ * @throws {Error} Throws an error if an issue occurs during the database operation.
+ */
 const addDogToShow = async ({
   data, //dog data
   Show, // Show to add the dog to
@@ -26,7 +41,7 @@ const addDogToShow = async ({
 
     // Retrieve the dog document from the database
     const doc = await docRef.get();
-    // If the Kalevet is valid and the dog document exists in the database, 
+    // If the Kalevet is valid and the dog document exists in the database,
     //update the dog information
     if (IsValid && doc.exists) {
       await db
@@ -75,8 +90,6 @@ const addDogToShow = async ({
     }
   }
 };
-
-module.exports = { addDogToShow };
 
 //const { getdatafrommoagdb } = require("../utils/getdatafrommoagdb");
 //chipnum, in pararms

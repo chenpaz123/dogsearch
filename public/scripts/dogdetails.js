@@ -32,13 +32,17 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     console.log(showList.value);
-    if (showList.value != "Select a Show") {
-      localStorage.setItem("showname", showList.value);
-      const chooseshow = document.getElementById("chooseshow");
-      chooseshow.style.display = "none";
-      scandog.style.display = "block";
+    if (showList.value == "לא קיימות תערוכות") {
+      alert("לא קיימות תערוכות");
     } else {
-      alert("בחר תערוכה");
+      if (showList.value != "Select a Show") {
+        localStorage.setItem("showname", showList.value);
+        const chooseshow = document.getElementById("chooseshow");
+        chooseshow.style.display = "none";
+        scandog.style.display = "block";
+      } else {
+        alert("בחר תערוכה");
+      }
     }
   });
 });

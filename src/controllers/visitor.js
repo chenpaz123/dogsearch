@@ -1,3 +1,29 @@
+/**
+ * The getvisitordata function processes an image containing a Brucella test result,
+ * validates the test information, and returns an object containing the validation
+ * status and relevant information.
+ *
+ * @param {string} showdate - The date of the show.
+ * @param {string} image - The input image containing the Brucella test result.
+ * @param {string} chipnum - The chip number to be validated.
+ * @returns {Object} An object containing the following properties:
+ *  - status: {number} A status code indicating the success or failure of the operation.
+ *  - message: {string} A description of the status.
+ *  - date: {string} The extracted date, if any.
+ *  - chip: {string} The extracted chip number, if any.
+ *  - result: {boolean} A boolean value representing whether the test result is negative (true) or not (false).
+ *
+ * Possible status codes and messages:
+ *  - 201: brucella is valid
+ *  - 400: brucella not added
+ *  - 401: אין מספר שבב (No chip number)
+ *  - 402: ברוצלה לא בתוקף (Brucella not valid)
+ *  - 403: אין תאריך ברוצלה (No Brucella date)
+ *  - 405: אין תמונה (No image)
+ *  - 406: מספר שבב לא תואם (Chip number does not match)
+ *  - 407: ברוצלה לא שלילית (Brucella not negative)
+ */
+
 // Import required modules
 const { ocr } = require("../controllers/ocr");
 const { GetBrucellaValid } = require("../utils/hisunvalid");
@@ -23,6 +49,7 @@ const getvisitordata = async ({ showdate, image, chipnum }) => {
         message: "מספר שבב לא תואם",
       };
     }
+    // Check if the Brucella test result is negative
     if (!result) {
       return {
         status: 407,

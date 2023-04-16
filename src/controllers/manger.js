@@ -1,15 +1,21 @@
-const { db, auth } = require("../firebase/firebase");
+const { db } = require("../firebase/firebase");
 const { fixdatetodot } = require("../utils/fixdate");
-//const {firebase} = require("firebase")
-// make the document name as the show name and date and put no data in it
+/**
+ * Creates a new show in the database with a given showName and date.
+ *
+ * @param {string} showName - The name of the show.
+ * @param {string} date - The date of the show.
+ * @param {string} desc - The description of the show.
+ * @returns {Object} An object containing a status code and a message.
+ */
 
-const createShow = async (KenelClubName, date, desc) => {
+const createShow = async (showName, date, desc) => {
   date = fixdatetodot(date);
-  const show = await db.collection("shows").doc(`${KenelClubName} - ${date}`);
+  const show = await db.collection("shows").doc(`${showName} - ${date}`);
   //set the desc as a field in the show document
   const showdesc = await db
     .collection("shows")
-    .doc(`${KenelClubName} - ${date}`);
+    .doc(`${showName} - ${date}`);
 
   try {
     if ((await show.get()).exists) {
@@ -32,35 +38,53 @@ const createShow = async (KenelClubName, date, desc) => {
   }
 };
 
-//create a func that returns all the shows as objects with the show name and date
+/**
+ * Retrieves all the shows from the database.
+ *
+ * @returns {Object} An object containing a status code, a message, and an array of show objects.
+ */
 const getallshows = async () => {
   //create an array to store the shows names
   const shows = [];
   //get all the shows from the database
   const showsdata = await db.collection("shows").get();
-  //split the show name and date
-  showsdata.forEach((show) => {
-    const showname = show.id.split(" - ");
-    shows.push({
-      name: showname[0],
-      date: showname[1],
-      desc: show.data().desc,
+  //check if there are any shows
+  if (showsdata.empty) {
+    return {
+      shows: shows,
+      message: "no shows available",
+      status: 400,
+    };
+  } else {
+    //split the show name and date
+    showsdata.forEach((show) => {
+      const showName = show.id.split(" - ");
+      shows.push({
+        name: showName[0],
+        date: showName[1],
+        desc: show.data().desc,
+      });
     });
-  });
-  //return the array
-  return {
-    shows: shows,
-    message: "shows returned",
-    status: 200,
-  };
+    //return the array
+    return {
+      shows: shows,
+      message: "shows returned",
+      status: 200,
+    };
+  }
 };
 
-//create a func that gets show object and delte it from the database
+/**
+ * Deletes a show from the database.
+ *
+ * @param {Object} show - The show object to be deleted.
+ * @returns {Object} An object containing a status code and a message.
+ */
 const deleteShow = async (show) => {
   console.log(show);
   console.log("in func");
-  const showname = `${show.name} - ${show.date}`;
-  const showdoc = await db.collection("shows").doc(`${showname}`);
+  const showName = `${show.name} - ${show.date}`;
+  const showdoc = await db.collection("shows").doc(`${showName}`);
   try {
     if (!(await showdoc.get()).exists) {
       return {
@@ -80,16 +104,21 @@ const deleteShow = async (show) => {
     };
   }
 };
-//create a func that gets a old show object and a new show object and updates the old show with the new one replacing the name and date and the desc
-// withouth deleting the content of the old show, just update name and date and desc
+/**
+ * Updates an existing show in the database with new information.
+ *
+ * @param {Object} oldshow - The old show object to be updated.
+ * @param {Object} updatedshow - The new show object containing updated information.
+ * @returns {Object} An object containing a status code and a message.
+ */
 
 const updateshow = async (oldshow, updatedshow) => {
   console.log(oldshow, updatedshow);
-  const oldshowname = `${oldshow.name} - ${oldshow.date}`;
-  const oldshowdoc = await db.collection("shows").doc(`${oldshowname}`);
+  const oldshowName = `${oldshow.name} - ${oldshow.date}`;
+  const oldshowdoc = await db.collection("shows").doc(`${oldshowName}`);
   updatedshow.date = fixdatetodot(updatedshow.date);
-  const newshowname = `${updatedshow.name} - ${updatedshow.date}`;
-  const newshowdoc = await db.collection("shows").doc(`${newshowname}`);
+  const newshowName = `${updatedshow.name} - ${updatedshow.date}`;
+  const newshowdoc = await db.collection("shows").doc(`${newshowName}`);
   //update the old show with the new one
   try {
     if (!(await oldshowdoc.get()).exists) {
