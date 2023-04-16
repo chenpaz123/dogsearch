@@ -1,6 +1,3 @@
-//when pressing a button having the id of "button1" make post request to the server with the data from the input having the id of "chipnum" and print the response to the console in json format.
-//
-
 //vet section
 
 const vetfirstname = localStorage.getItem("vetfirstname");
@@ -9,10 +6,6 @@ const vetlastname = localStorage.getItem("vetlastname");
 document.getElementById(
   "greeting"
 ).innerHTML += ` ${vetfirstname} ${vetlastname}`;
-/*function onFormSubmit() {
-  event.preventDefault();
-  CheckChip();
-}*/
 
 //if button 2 is pressed reload the page
 document.getElementById("button2").addEventListener("click", () => {
@@ -87,14 +80,10 @@ const firebaseConfig = firebasejson;
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
-//on firebase change event activate a function
-
 onValue(ref(db, "chip/"), (snapshot) => {
   const data = snapshot.val();
   console.log("written chip" + data);
   if (data != 0) {
-    //CheckChip(data);
-    //data = parseInt(data);
     Clear();
     getdatafrommoagdb(data);
   }
@@ -103,33 +92,6 @@ onValue(ref(db, "chip/"), (snapshot) => {
   set(ref(db, "chip/"), 0);
 });
 
-//write the checkchip function in a way that it will work with the server
-/*
-const CheckChip = async (chipnum) => {
-  //var chipnum = document.getElementById("chipnum").value;
-  var url = `http://localhost:3000/GetChipNumFromESP/${chipnum}`;
-  var senddata = { ChipNum: parseInt(chipnum) };
-  console.log(senddata);
-  console.log(JSON.stringify(senddata));
-  try {
-    //allow the server to read the data from the request
-    // allow the request to be sent to the server
-    //allow the server to send the response to the client
-    const response = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    console.log(response);
-    addDogToShow();
-  } catch (error) {
-    console.log(error);
-    alert("אין חיבור לשרת");
-  }
-};*/
-
-//// fetch to this address https://dogsearch.moag.gov.il/api/GetAnimalDetails with the body {"SearchParam":"939000011003017","top":10,"skip":0}
 const getdatafrommoagdb = async (ChipNum) => {
   console.log(ChipNum);
   console.log("in find with " + ChipNum);
@@ -201,8 +163,6 @@ const addDogToShow = async (
     console.log(error);
   }
 };
-
-//getdatafrommoagdb(939000011003017);
 
 //page section
 
