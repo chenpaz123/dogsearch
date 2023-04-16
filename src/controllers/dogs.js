@@ -91,6 +91,8 @@ const addDogToShow = async ({
   }
 };
 
+module.exports = { addDogToShow };
+
 //const { getdatafrommoagdb } = require("../utils/getdatafrommoagdb");
 //chipnum, in pararms
 //const data = await getdatafrommoagdb(ChipNum); inttry
