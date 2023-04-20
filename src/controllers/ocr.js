@@ -47,8 +47,6 @@ const ocr = async (image) => {
     };
   }
 
-  var date, chip1;
-
   console.log("dates: ", dates);
 
   // If dates are found, set the date variable
@@ -80,9 +78,8 @@ const ocr = async (image) => {
   }
 
   // If the test result is not negative, return an error status with the extracted data
-  if (result !== null) {
-    console.log("result: ", result);
-  } else {
+  if (result !== "negative") {
+    console.log("הבדיקה לא שלילית");
     return {
       message: "הבדיקה לא שלילית",
       status: 407,

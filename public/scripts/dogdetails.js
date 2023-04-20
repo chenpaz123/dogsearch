@@ -7,16 +7,13 @@ document.getElementById(
   "greeting"
 ).innerHTML += ` ${vetfirstname} ${vetlastname}`;
 
-//if button 2 is pressed reload the page
-document.getElementById("button2").addEventListener("click", () => {
-  location.reload();
-});
-
 import { getShows } from "./getshows.js";
 document.addEventListener("DOMContentLoaded", function () {
   getShows();
 });
 document.addEventListener("DOMContentLoaded", () => {
+  const scandog = document.getElementById("scan dog");
+  scandog.style.display = "none";
   const form = document.getElementById("form");
   const showList = document.getElementById("show-list");
   checkshow();
@@ -39,8 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-const scandog = document.getElementById("scan dog");
-scandog.style.display = "none";
+
 const checkshow = () => {
   const showname = localStorage.getItem("showname");
   if (showname) {
@@ -80,16 +76,20 @@ const firebaseConfig = firebasejson;
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
-onValue(ref(db, "chip/"), (snapshot) => {
+onValue(ref(db, "chip/"), async (snapshot) => {
   const data = snapshot.val();
   console.log("written chip" + data);
   if (data != 0) {
     Clear();
-    getdatafrommoagdb(data);
+    await getdatafrommoagdb(data);
   }
   //change the value of the chip number in the database to 0
-  setTimeout(200);
-  set(ref(db, "chip/"), 0);
+  try {
+    await set(ref(db, "chip/"), 0);
+    console.log("Value set to 0 successfully.");
+  } catch (error) {
+    console.error("Failed to set the value to 0:", error);
+  }
 });
 
 const getdatafrommoagdb = async (ChipNum) => {
@@ -114,7 +114,6 @@ const getdatafrommoagdb = async (ChipNum) => {
 };
 
 const addDogToShow = async (
-  //chipnum,
   chipdata
 ) => {
   if (chipdata["Count"] == 0) {
@@ -137,7 +136,6 @@ const addDogToShow = async (
       body: JSON.stringify({
         Show: Show,
         data: chipdata,
-        //chioNum: chipnum,
       }),
     });
     console.log("after fetch");
@@ -145,19 +143,22 @@ const addDogToShow = async (
     const data = await response.json();
     console.log("after response");
     console.log(data);
-    if (data.status == 201) {
-      PrintData(data);
-      alert("הכלב רשאי להיכנס לתערוכה");
-    }
-    if (data.status == 400) {
-      PrintData(data);
-      alert("הכלב אינו רשאי להיכנס לתערוכה");
-    }
-    if (data.status == 500) {
-      alert("אין חיבור לאינטרנט");
-    }
-    if (data.status == 404) {
-      alert("מספר השבב שהזנת אינו קיים במערכת");
+
+    switch (data.status) {
+      case 201:
+        PrintData(data);
+        alert("הכלב רשאי להיכנס לתערוכה");
+        break;
+      case 400:
+        PrintData(data);
+        alert("הכלב אינו רשאי להיכנס לתערוכה");
+        break;
+      case 500:
+        alert("אין חיבור לאינטרנט");
+        break;
+      case 404:
+        alert("מספר השבב שהזנת אינו קיים במערכת");
+        break;
     }
   } catch (error) {
     console.log(error);

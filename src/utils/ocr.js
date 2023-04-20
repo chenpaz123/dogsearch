@@ -33,17 +33,20 @@ const extractChip = (text) => {
  * @returns {Array<string>} An array of strings containing negative results.
  */
 const extractResult = (text) => {
-  // Define a regex pattern to match the words "שלילי" or "negative"
-  const regex = /(Negative|NEGATIVE|negative|שלילי)/gi;
-  const result = text.match(regex);
-  return result;
+  const negregex = /(Negative|NEGATIVE|negative|שלילי)/gi;
+  const posregex = /(Positive|POSITIVE|positive|חיובי)/gi;
+  if (text.match(negregex) != null) {
+    return "negative";
+  } else if (text.match(posregex) != null) {
+    return "positive";
+  } else {
+    return "unknown";
+  }
 };
 
 const { createWorker } = require("tesseract.js");
 
-const worker = createWorker({
-  //   logger: m => console.log(m)
-});
+const worker = createWorker();
 /**
  * Reads the text from an image file using Tesseract.js.
  *
@@ -68,21 +71,19 @@ const ReadText = async (imgfile, oem, psm) => {
     await worker.setParameters({
       tessedit_ocr_engine_mode: oem_var,
       tessedit_pageseg_mode: psm_var,
-      // tessedit_char_whitelist: '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
     });
     console.log("worker parameters set");
     const {
       data: { text },
-    } = await worker.recognize(imgfile, {
-      // tessedit_char_whitelist: '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
-    });
+    } = await worker.recognize(imgfile);
     console.log(text);
     console.log("worker recognized");
     return text;
   } catch (e) {
     return `An error occurred: ${e}`;
   } finally {
-    await worker.terminate(); // terminate the worker
+    await worker.terminate();
+    console.log("worker terminated");
   }
 };
 

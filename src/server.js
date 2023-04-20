@@ -7,12 +7,10 @@ const ocrrouter = require("./routers/ocr");
 const visitordatarouter = require("./routers/visitor");
 const brucellarouter = require("./routers/brucella");
 const mangerouter = require("./routers/manger");
-process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = "0";
 
 app.use(
   cors({
     origin: "*",
-    credentials: true,
   })
 );
 app.use(

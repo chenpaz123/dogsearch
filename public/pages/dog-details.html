@@ -106,44 +106,36 @@
             ></button>
           </div>
           <div class="modal-body">
-            <div class="container">
-              <div class="row">
-                <div class="col-sm-12">
-                  <div class="d-flex justify-content-center">
-                    <form id="form">
-                      <div class="container">
-                        <div class="row">
-                          <div class="col-12">
-                            <h1 class="text-center">בחר תערוכה</h1>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-12">
-                            <div class="form-group">
-                              <select id="show-list" class="form-control">
-                                <option disabled selected>Select a Show</option>
-                              </select>
-                            </div>
-                          </div>
-                        </div>
-                        <br />
-                        <div class="row">
-                          <div class="col-12 center-content">
-                            <button
-                              type="submit"
-                              class="btn btn-primary"
-                              data-bs-dismiss="modal"
-                            >
-                              שלח
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </form>
+            <form id="form">
+              <div class="container">
+                <div class="row">
+                  <div class="col-12">
+                    <h1 class="text-center">בחר תערוכה</h1>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    <div class="form-group form-group-centered">
+                      <select id="show-list" class="form-control select-narrow">
+                        <option disabled selected>Select a Show</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <br />
+                <div class="row">
+                  <div class="col-12 center-content">
+                    <button
+                      type="submit"
+                      class="btn btn-primary"
+                      data-bs-dismiss="modal"
+                    >
+                      שלח
+                    </button>
                   </div>
                 </div>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
@@ -196,9 +188,6 @@
           <p id="kalevetvalid"></p>
           <h3>האם ברוצלה בתוקף</h3>
           <p id="brucellavalid"></p>
-          <button type="button" id="button2" class="btn-primary">
-            Scan New Dog
-          </button>
         </div>
       </div>
     </div>

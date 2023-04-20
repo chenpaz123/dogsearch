@@ -22,3 +22,10 @@
   align-items: center;
   flex-direction: column;
 }
+.select-narrow {
+  width: 70%;
+}
+.form-group-centered {
+  display: flex;
+  justify-content: center;
+}
