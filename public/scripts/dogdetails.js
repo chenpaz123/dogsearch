@@ -29,6 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("showname", showList.value);
         const chooseshow = document.getElementById("chooseshow");
         chooseshow.style.display = "none";
+        const scandog = document.getElementById("scan dog");
         scandog.style.display = "block";
       } else {
         alert("בחר תערוכה");
@@ -41,6 +42,8 @@ const checkshow = () => {
   const showname = localStorage.getItem("showname");
   if (showname) {
     const chooseshow = document.getElementById("chooseshow");
+    const scandog = document.getElementById("scan dog");
+
     chooseshow.style.display = "none";
     scandog.style.display = "block";
   }
@@ -75,9 +78,13 @@ import {
 const firebaseConfig = firebasejson;
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
+console.log(db);
 
 onValue(ref(db, "chip/"), async (snapshot) => {
+  console.log(snapshot.val());
+  console.log("in on value");
   const data = snapshot.val();
+  console.log("chip number" + data);
   console.log("written chip" + data);
   if (data != 0) {
     Clear();
@@ -113,9 +120,7 @@ const getdatafrommoagdb = async (ChipNum) => {
   }
 };
 
-const addDogToShow = async (
-  chipdata
-) => {
+const addDogToShow = async (chipdata) => {
   if (chipdata["Count"] == 0) {
     alert("המאגר לא זמין כעת, נסה שוב בעוד מספר שניות");
     return;
