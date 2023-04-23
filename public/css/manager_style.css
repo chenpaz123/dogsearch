@@ -1,30 +1,64 @@
+/* Import the contents of the external CSS file "nav_style.css" */
 @import "nav_style.css";
+
+/* Start a CSS rule for the class "jumbotron" */
 .jumbotron {
+  /* Set the minimum height of the elements with class "jumbotron" to 550 pixels */
   min-height: 550px;
+
+  /* Set the background image to a combination of a repeating linear gradient and an image file */
   background-image: repeating-linear-gradient(360deg, transparent, black),
     url("../img/show3.JPG");
+
+  /* Set the size of the background images */
   background-size: auto, cover;
+
+  /* Set the attachment behavior of the background images */
   background-attachment: scroll, fixed;
+
+  /* Set the text color of the element to white */
   color: white;
+
+  /* Align the flex items horizontally at the center of the element */
   justify-content: center;
+
+  /* Align the flex items vertically at the center of the element */
   align-items: center;
 }
+
+/* Start a CSS rule for the class "jum-heading" */
 .jum-heading {
+  /* Set the font size of the elements with class "jum-heading" to 50 pixels */
   font-size: 50px;
+
+  /* Set the text alignment of the elements with class "jum-heading" to center */
   text-align: center;
 }
 
+/* Start a CSS rule for the class "jum-paragraph" */
 .jum-paragraph {
+  /* Set the text alignment of the elements with class "jum-paragraph" to center */
   text-align: center;
 }
+
+/* Start a CSS rule for the "input" elements with a "type" attribute of "password" or "email" */
 input[type="password"],
 input[type="email"] {
+  /* Set the text alignment of the "input" elements to center */
   text-align: center;
 }
+
+/* Start a CSS rule for the "label" elements */
 label {
+  /* Set the bottom margin of the "label" elements */
   margin-bottom: 5px;
 }
+
+/* Start a CSS rule for the class "form-field" */
 .form-field {
+  /* Set the top margin of the elements with class "form-field" */
   margin-top: 10px;
+
+  /* Set the maximum width of the elements with class "form-field" */
   max-width: 400px;
 }

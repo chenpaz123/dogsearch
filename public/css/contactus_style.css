@@ -1,12 +1,29 @@
-@import "./index_style.css";
+/* Import the contents of the external CSS file "index_style.css" */
+@import "./nav_style.css";
+/* Start a CSS rule for the class "jumbotron" */
 .jumbotron {
+  /* Set the minimum height of the elements with class "jumbotron" to 550 pixels */
   min-height: 550px;
+
+  /* Set the background image to a combination of a repeating linear gradient and an image file */
   background-image: repeating-linear-gradient(180deg, transparent, black),
     url("../img/goblets.jpg");
+
+  /* Set the size of the background images */
   background-size: auto, cover;
+
+  /* Set the attachment behavior of the background images */
   background-attachment: scroll, fixed;
+
+  /* Set the text color of the element to white */
   color: white;
+
+  /* Enable the use of the Flexbox layout for the element's content */
   display: flex;
+
+  /* Align the flex items horizontally at the center of the element */
   justify-content: center;
+
+  /* Align the flex items vertically at the center of the element */
   align-items: center;
 }

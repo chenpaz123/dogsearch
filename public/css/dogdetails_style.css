@@ -1,31 +1,71 @@
+/* Import the contents of the external CSS file "nav_style.css" */
 @import "nav_style.css";
+
+/* Start a CSS rule for the ID "button2chip" */
 #button2chip {
+  /* Set the background color of the element */
   background-color: #4caf50;
+
+  /* Set the text color of the element to white */
   color: white;
+
+  /* Set the padding around the element */
   padding: 14px 20px;
+
+  /* Set the margin around the element */
   margin: 8px 0;
+
+  /* Remove the default border of the element */
   border: none;
+
+  /* Set the border radius to create rounded corners */
   border-radius: 4px;
+
+  /* Set the cursor to a pointer when hovering over the element */
   cursor: pointer;
 }
 
+/* Start a CSS rule for the ID "button2" when the element is hovered */
 #button2:hover {
+  /* Set the background color of the element when hovered */
   background-color: #45a049;
 }
+
+/* Start a CSS rule for the class "center-content" */
 .center-content {
+  /* Enable the use of the Flexbox layout for the element's content */
   display: flex;
+
+  /* Align the flex items horizontally at the center of the element */
   justify-content: center;
 }
+
+/* Start a CSS rule for the class "dogdet" */
 .dogdet {
+  /* Enable the use of the Flexbox layout for the element's content */
   display: flex;
+
+  /* Align the flex items horizontally at the center of the element */
   justify-content: center;
+
+  /* Align the flex items vertically at the center of the element */
   align-items: center;
+
+  /* Set the direction of the Flexbox layout to be a column */
   flex-direction: column;
 }
+
+/* Start a CSS rule for the class "select-narrow" */
 .select-narrow {
+  /* Set the width of the element to 70% */
   width: 70%;
 }
+
+/* Start a CSS rule for the class "form-group-centered" */
 .form-group-centered {
+  /* Enable the use of the Flexbox layout for the element's content */
   display: flex;
+
+  /* Align the flex items horizontally at the center of the element */
   justify-content: center;
 }

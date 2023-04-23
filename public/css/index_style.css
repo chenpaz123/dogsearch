@@ -1,54 +1,118 @@
+/* Import the contents of the external CSS file "nav_style.css" */
 @import "nav_style.css";
+
+/* Start a CSS rule for the class "jumbotron" */
 .jumbotron {
+  /* Set the minimum height of the elements with class "jumbotron" to 550 pixels */
   min-height: 550px;
+
+  /* Set the background image to a combination of a repeating linear gradient and an image file */
   background-image: repeating-linear-gradient(180deg, transparent, transparent),
     url("../img/pupp.JPG");
+
+  /* Set the size of the background images */
   background-size: auto, cover;
+
+  /* Set the attachment behavior of the background images */
   background-attachment: scroll, fixed;
+
+  /* Set the text color of the element to white */
   color: white;
+
+  /* Enable the use of the Flexbox layout for the element's content */
   display: flex;
+
+  /* Align the flex items horizontally at the center of the element */
   justify-content: center;
+
+  /* Align the flex items vertically at the center of the element */
   align-items: center;
 }
 
+/* Start a CSS rule for the "h2" elements */
 h2 {
+  /* Set the font size of the "h2" elements to 50 pixels */
   font-size: 50px;
+
+  /* Set the text alignment of the "h2" elements to center */
   text-align: center;
 }
+
+/* Start a CSS rule for the class "eff-section" */
 .eff-section {
+  /* Set the minimum height of the elements with class "eff-section" to 550 pixels */
   min-height: 550px;
+
+  /* Set the background image to a combination of an image file and a linear gradient */
   background-image: url("../img/karma.png"),
     linear-gradient(180deg, rgba(34, 34, 34, 0.17), #222);
+
+  /* Set the position of the background images */
   background-position: 80% 0%, 0px 0px;
+
+  /* Set the size of the background images */
   background-size: cover, auto;
+
+  /* Set the repeat behavior of the background images */
   background-repeat: no-repeat;
+
+  /* Set the text color of the element to white */
   color: white;
 }
 
+/* Start a CSS rule for the class "eff-heading" */
 .eff-heading {
+  /* Set the width of the elements with class "eff-heading" to 30% */
   width: 30%;
+
+  /* Set the font size of the elements with class "eff-heading" to 45 pixels */
   font-size: 45px;
+
+  /* Set the text alignment of the elements with class "eff-heading" to center */
   text-align: center;
+
+  /* Set the right margin of the elements with class "eff-heading" */
   margin-right: 5%;
 }
 
+/* Start a CSS rule for the class "eff-paragraph" */
 .eff-paragraph {
+  /* Set the width of the elements with class "eff-paragraph" to 20% */
   width: 20%;
+
+  /* Set the bottom margin of the elements with class "eff-paragraph" */
   margin-bottom: 25px;
+
+  /* Set the font size of the elements with class "eff-paragraph" to 20 pixels */
   font-size: 20px;
+
+  /* Set the right margin of the elements with class "eff-paragraph" */
   margin-right: 10%;
+
+  /* Set the text alignment of the elements with class "eff-paragraph" to center */
   text-align: center;
 }
 
+/* Start a new CSS rule for the "h2" elements */
 h2 {
+  /* Set the font size of the "h2" elements to 40 pixels */
   font-size: 40px;
+
+  /* Set the text alignment of the "h2" elements to center */
   text-align: center;
 }
 
+/* Start a CSS rule for the "p" elements */
 p {
+  /* Set the font size of the "p" elements to 20 pixels */
   font-size: 20px;
+
+  /* Set the text alignment of the "p" elements to left */
   text-align: left;
 }
+
+/* Start a CSS rule for the "body" element */
 body {
+  /* Hide the horizontal scrollbar if the content overflows the viewport */
   overflow-x: hidden;
 }

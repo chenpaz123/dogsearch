@@ -1,76 +1,164 @@
+/* Import the contents of the external CSS file "nav_style.css" */
 @import "./nav_style.css";
 
+/* Start a CSS rule for the class "jumbotron" */
 .jumbotron {
+  /* Set the minimum height of the elements with class "jumbotron" to 550 pixels */
   min-height: 550px;
+
+  /* Set the background image to a combination of a linear gradient and an image file */
   background-image: linear-gradient(360deg, #222, rgba(34, 34, 34, 0)),
     url("https://uploads-ssl.webflow.com/64073eff0672ea5a62d4d364/6409f7ab13f6c83b9d57a24e_690829.jpg");
+
+  /* Set the position of the background images */
   background-position: 0px 0px, 50% 0%;
+
+  /* Set the size of the background images */
   background-size: auto, cover;
+
+  /* Set the attachment behavior of the background images */
   background-attachment: scroll, fixed;
+
+  /* Set the text color of the element to white */
   color: white;
+
+  /* Enable the use of the Flexbox layout for the element's content */
   display: flex;
+
+  /* Align the flex items vertically at the center of the element */
   align-items: center;
+
+  /* Align the flex items horizontally at the center of the element */
   justify-content: center;
 }
+
+/* Start a CSS rule for the class "jum-heading" */
 .jum-heading {
+  /* Set the width of the elements with class "jum-heading" to 30% */
   width: 30%;
+
+  /* Set the font size of the elements with class "jum-heading" to 60 pixels */
   font-size: 60px;
+
+  /* Set the text alignment of the elements with class "jum-heading" to left */
   text-align: left;
 }
 
+/* Start a CSS rule for the class "jum-paragraph" */
 .jum-paragraph {
+  /* Set the width of the elements with class "jum-paragraph" to 30% */
   width: 30%;
+
+  /* Set the text alignment of the elements with class "jum-paragraph" to left */
   text-align: left;
 }
+
+/* Start a CSS rule for the class "picturepara" */
 .picturepara {
+  /* Set the width of the elements with class "picturepara" to 35% */
   width: 35%;
+
+  /* Center the elements with class "picturepara" horizontally */
   margin: 0 auto;
 }
 
+/* Start a CSS rule for the class "footing" */
 .footing {
+  /* Set the minimum height of the elements with class "footing" to 550 pixels */
   min-height: 550px;
+
+  /* Set the background image to a combination of a linear gradient and an image file */
   background-image: linear-gradient(360deg, #222, rgba(34, 34, 34, 0)),
     url("https://uploads-ssl.webflow.com/64073eff0672ea5a62d4d364/640a3c841d7c97f9796325f9_1213725%20(2).jpg");
+
+  /* Set the position of the background images */
   background-position: 0px 0px, 50% 0%;
+
+  /* Set the size of the background images */
   background-size: auto, cover;
 
+  /* Set the attachment behavior of the background images */
   background-attachment: scroll, fixed;
+
+  /* Set the text color of the elements with class "footing" to white */
   color: white;
+
+  /* Enable the use of the Flexbox layout for the element's content */
   display: flex;
+
+  /* Align the flex items vertically at the center of the element */
   align-items: center;
+
+  /* Align the flex items horizontally at the center of the element */
   justify-content: center;
+
+  /* Set the bottom margin of the elements with class "footing" to 0 pixels */
   margin-bottom: 0px;
 }
+
+/* Start a CSS rule for the class "foot-heading" */
 .foot-heading {
+  /* Set the width of the elements with class "foot-heading" to 30% */
   width: 30%;
+
+  /* Set the font size of the elements with class "foot-heading" to 60 pixels */
   font-size: 60px;
+
+  /* Set the text alignment of the elements with class "foot-heading" to left */
   text-align: left;
 }
 
+/* Start a CSS rule for the class "foot-paragraph" */
 .foot-paragraph {
+  /* Set the width of the elements with class "foot-paragraph" to 30% */
   width: 30%;
+
+  /* Set the text alignment of the elements with class "foot-paragraph" to left */
   text-align: left;
 }
+
+/* Start a CSS rule for the "label" elements */
 label {
+  /* Set the bottom margin of the "label" elements */
   margin-bottom: 5px;
 }
+
+/* Start a CSS rule for the class "form-field" */
 .form-field {
+  /* Set the top margin of the elements with class "form-field" */
   margin-top: 10px;
+
+  /* Set the maximum width of the elements with class "form-field" */
   max-width: 350px;
 }
+
+/* Start a CSS rule for the "input" elements with a "type" attribute of "text" or "date" */
 input[type="text"],
 input[type="date"] {
+  /* Set the text alignment of the "input" elements to center */
   text-align: center;
 }
 
+/* Start a CSS rule for the "select" elements */
 select {
+  /* Set the text alignment of the "select" elements to center */
   text-align: center;
 }
 
+/* Start a CSS rule for the class "text-center" */
 .text-center {
+  /* Set the text alignment of the elements with class "text-center" to center */
   text-align: center;
+
+  /* Align the flex items horizontally at the center of the element */
   justify-content: center;
+
+  /* Align the flex items vertically at the center of the element */
   align-items: center;
+
+  /* Enable the use of the Flexbox layout for the element's content */
   display: flex;
+
+  /* Set the direction of the flex items */
   flex-direction: column;
 }
