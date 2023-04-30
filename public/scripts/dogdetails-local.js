@@ -88,7 +88,7 @@ onValue(ref(db, "chip/"), async (snapshot) => {
   console.log("written chip" + data);
   if (data != 0) {
     Clear();
-    await getdatafrommoagdb(data);
+    getdatafrommoagdb(data);
   }
   //change the value of the chip number in the database to 0
   try {
@@ -99,24 +99,51 @@ onValue(ref(db, "chip/"), async (snapshot) => {
   }
 });
 
-const getdatafrommoagdb = async (ChipNum) => {
-  console.log(ChipNum);
-  console.log("in find with " + ChipNum);
-  const url = "https://dogsearch.moag.gov.il/api/GetAnimalDetails";
-  const senddata = { SearchParam: ChipNum, top: 10, skip: 0 };
-  try {
-    const response = await fetch(url, {
-      method: "POST",
-      body: JSON.stringify(senddata),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const data = await response.json();
-    console.log(data);
-    await addDogToShow(data);
-  } catch (error) {
-    console.log(error);
+const response = {
+  Count: 1,
+  Date: "04/30/2023 14:59:24",
+  AnimalDetails: [
+    {
+      AnimalType: "כלב",
+      ChipNumber: "939000007508553",
+      AnimalName: "פארוק",
+      Gender: "זכר",
+      Race: "פודל",
+      Color: "שחור",
+      BrithDate: "02/2011",
+      DangerousDog: false,
+      GuidingDog: false,
+      SecurityDog: false,
+      OwnerName: "פז איריס ואמיר",
+      Address: "ביאליק 162/46",
+      City: "חולון",
+      CellPhone: "052-4244342",
+      Yikur: true,
+      Hisun: "13",
+      HisunDate: "10/04/2023",
+      VetName: "היימן גיורא דב",
+      Vetnumber: "669",
+      LicenceNumber: "2335",
+      LicenceDate: "01/02/2011",
+      LastUpdate: "23/04/2023",
+      Status: "פעיל",
+      Brucella: false,
+      MdBAddress: " ",
+    },
+  ],
+};
+
+const getdatafrommoagdb = (ChipNum) => {
+  console.log("in bewwwww");
+  const data = response;
+  if ((ChipNum = data["AnimalDetails"][0]["ChipNumber"])) {
+    console.log("chip number is the same");
+    console.log(ChipNum);
+    addDogToShow(data);
+  } else {
+    console.log("chip number is not the same");
+    alert("מספר השבב שהזנת אינו קיים במערכת");
+    console.log(ChipNum);
   }
 };
 
