@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     console.log(showList.value);
     if (showList.value == "לא קיימות תערוכות") {
-      alert("לא קיימות תערוכות");
+      showAlertModal("לא קיימות תערוכות");
     } else {
       if (showList.value != "Select a Show") {
         localStorage.setItem("showname", showList.value);
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const scandog = document.getElementById("scan dog");
         scandog.style.display = "block";
       } else {
-        alert("בחר תערוכה");
+        showAlertModal("בחר תערוכה");
       }
     }
   });
@@ -142,14 +142,14 @@ const getdatafrommoagdb = (ChipNum) => {
     addDogToShow(data);
   } else {
     console.log("chip number is not the same");
-    alert("מספר השבב שהזנת אינו קיים במערכת");
+    showAlertModal("מספר השבב שהזנת אינו קיים במערכת");
     console.log(ChipNum);
   }
 };
 
 const addDogToShow = async (chipdata) => {
   if (chipdata["Count"] == 0) {
-    alert("המאגר לא זמין כעת, נסה שוב בעוד מספר שניות");
+    showAlertModal("המאגר לא זמין כעת, נסה שוב בעוד מספר שניות");
     return;
   }
   console.log(chipdata);
@@ -179,17 +179,17 @@ const addDogToShow = async (chipdata) => {
     switch (data.status) {
       case 201:
         PrintData(data);
-        alert("הכלב רשאי להיכנס לתערוכה");
+        showAlertModal("הכלב רשאי להיכנס לתערוכה");
         break;
       case 400:
         PrintData(data);
-        alert("הכלב אינו רשאי להיכנס לתערוכה");
+        showAlertModal("הכלב אינו רשאי להיכנס לתערוכה");
         break;
       case 500:
-        alert("אין חיבור לאינטרנט");
+        showAlertModal("אין חיבור לאינטרנט");
         break;
       case 404:
-        alert("מספר השבב שהזנת אינו קיים במערכת");
+        showAlertModal("מספר השבב שהזנת אינו קיים במערכת");
         break;
     }
   } catch (error) {
@@ -256,4 +256,11 @@ const PrintData = (data) => {
     document.getElementById("brucellavalid").style.fontWeight = "bold";
     document.getElementById("brucellavalid").style.fontSize = "30px";
   }
+};
+
+const showAlertModal = (message) => {
+  const alertModal = $("#alertModal");
+  const alertModalBody = $("#alertModalBody");
+  alertModalBody.text(message);
+  alertModal.modal("show");
 };

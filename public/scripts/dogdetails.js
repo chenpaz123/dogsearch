@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     console.log(showList.value);
     if (showList.value == "לא קיימות תערוכות") {
-      alert("לא קיימות תערוכות");
+      showAlertModal("לא קיימות תערוכות");
     } else {
       if (showList.value != "Select a Show") {
         localStorage.setItem("showname", showList.value);
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const scandog = document.getElementById("scan dog");
         scandog.style.display = "block";
       } else {
-        alert("בחר תערוכה");
+        showAlertModal("בחר תערוכה");
       }
     }
   });
@@ -122,7 +122,7 @@ const getdatafrommoagdb = async (ChipNum) => {
 
 const addDogToShow = async (chipdata) => {
   if (chipdata["Count"] == 0) {
-    alert("המאגר לא זמין כעת, נסה שוב בעוד מספר שניות");
+    showAlertModal("המאגר לא זמין כעת, נסה שוב בעוד מספר שניות");
     return;
   }
   console.log(chipdata);
@@ -152,17 +152,17 @@ const addDogToShow = async (chipdata) => {
     switch (data.status) {
       case 201:
         PrintData(data);
-        alert("הכלב רשאי להיכנס לתערוכה");
+        showAlertModal("הכלב רשאי להיכנס לתערוכה");
         break;
       case 400:
         PrintData(data);
-        alert("הכלב אינו רשאי להיכנס לתערוכה");
+        showAlertModal("הכלב אינו רשאי להיכנס לתערוכה");
         break;
       case 500:
-        alert("אין חיבור לאינטרנט");
+        showAlertModal("אין חיבור לאינטרנט");
         break;
       case 404:
-        alert("מספר השבב שהזנת אינו קיים במערכת");
+        showAlertModal("מספר השבב שהזנת אינו קיים במערכת");
         break;
     }
   } catch (error) {
@@ -229,4 +229,19 @@ const PrintData = (data) => {
     document.getElementById("brucellavalid").style.fontWeight = "bold";
     document.getElementById("brucellavalid").style.fontSize = "30px";
   }
+};
+
+const showAlertModal = (message) => {
+  // Select the modal element using its ID 'alertModal'.
+  const alertModal = document.getElementById("alertModal");
+
+  // Select the modal body element using its ID 'alertModalBody'.
+  const alertModalBody = document.getElementById("alertModalBody");
+
+  // Update the text content of the modal body with the provided message.
+  alertModalBody.textContent = message;
+
+  // Show the modal using Bootstrap's 'modal' method with the 'show' argument.
+  const bootstrapModal = new bootstrap.Modal(alertModal);
+  bootstrapModal.show();
 };

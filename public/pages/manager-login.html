@@ -29,9 +29,6 @@
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -84,6 +81,28 @@
         </div>
       </div>
     </nav>
+
+    <div class="modal fade" id="alertModal" tabindex="-1">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title text-center" id="alertModalLabel">
+              הודעה מהאתר
+            </h5>
+          </div>
+          <div class="modal-body text-center" id="alertModalBody"></div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Login Form -->
     <div class="jumbotron">
@@ -140,16 +159,16 @@
           </div>
           <div class="col-sm-9 d-flex justify-content-around">
             <a href="https://facebook.com" target="_blank">
-              <img class="face" aria-label="Facebook" />
+              <img class="face" />
             </a>
             <a href="https://twitter.com" target="_blank">
-              <img class="twitt" aria-label="Twitter" />
+              <img class="twitt" " />
             </a>
             <a href="https://instagram.com" target="_blank">
-              <img class="inst" aria-label="Instagram" />
+              <img class="inst" />
             </a>
             <a href="https://linkedin.com" target="_blank">
-              <img class="linkedin" aria-label="LinkedIn" />
+              <img class="linkedin" />
             </a>
           </div>
         </div>

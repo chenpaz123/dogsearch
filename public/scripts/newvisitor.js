@@ -65,60 +65,53 @@ const sendData = async (show, chipnum, brucelladate, image) => {
             );
             const data2 = await res2.json();
             console.log(data2);
-            document.getElementById("loading-modal").style.display = "none";
-            alert("ברוצלה נוספה בהצלחה");
+            hideLoadingModal();
+            showLoadingModal("ברוצלה נוספה בהצלחה");
           } catch (error) {
             console.log(error);
-            alert(`brucella not added because of error: ${error}`);
+            showLoadingModal(`brucella not added because of error: ${error}`);
           }
         }
         break;
 
       case 401:
-        document.getElementById("loading-modal").style.display = "none";
-        alert("אין מספר שבב");
-        location.reload();
+        hideLoadingModal();
+        showLoadingModal("אין מספר שבב");
         break;
 
       case 402:
-        document.getElementById("loading-modal").style.display = "none";
-        alert("ברוצלה לא בתוקף");
-        location.reload();
+        hideLoadingModal();
+        showLoadingModal("ברוצלה לא בתוקף");
         break;
 
       case 403:
-        document.getElementById("loading-modal").style.display = "none";
-        alert("אין תאריך ברוצלה");
-        location.reload();
+        hideLoadingModal();
+        showLoadingModal("אין תאריך ברוצלה");
         break;
 
       case 405:
-        document.getElementById("loading-modal").style.display = "none";
-        alert("אין תמונה");
-        location.reload();
+        hideLoadingModal();
+        showLoadingModal("אין תמונה");
         break;
 
       case 406:
-        document.getElementById("loading-modal").style.display = "none";
-        alert("מספר שבב לא תואם");
-        location.reload();
+        hideLoadingModal();
+        showLoadingModal("מספר שבב לא תואם");
         break;
       case 407:
-        document.getElementById("loading-modal").style.display = "none";
-        alert("ברוצלה לא שלילית");
-        location.reload();
+        hideLoadingModal();
+        showLoadingModal("ברוצלה לא שלילית");
         break;
 
       default:
-        document.getElementById("loading-modal").style.display = "none";
-        alert("שגיאה בהוספת ברוצלה");
-        location.reload();
+        hideLoadingModal();
+        showLoadingModal("שגיאה בהוספת ברוצלה");
         break;
     }
   } catch (error) {
     console.log("in catch");
     console.log(error);
-    alert(`brucella not added because of error: ${error}`);
+    showLoadingModal(`brucella not added because of error: ${error}`);
   }
 };
 
@@ -140,3 +133,26 @@ const getimageurl = async (image) => {
 const extractDate = (str) => {
   return str.split("-")[1].trim();
 };
+
+const showLoadingModal = (message) => {
+  const loadingModal = document.getElementById("loading-modal");
+  const loadingMessage = document.getElementById("loadingMessage");
+  loadingMessage.textContent = message;
+  const circle = document.getElementById("circle");
+  const closeButton = document.getElementById("closeButton");
+  circle.style.display = "none";
+  closeButton.style.display = "block"; // Show the close button
+  loadingModal.classList.add("show");
+  loadingModal.style.display = "block";
+};
+
+const hideLoadingModal = () => {
+  const loadingModal = document.getElementById("loading-modal");
+  loadingModal.classList.remove("show");
+  loadingModal.style.display = "none";
+};
+
+document.getElementById("closeButton").addEventListener("click", () => {
+  hideLoadingModal();
+  location.reload();
+});

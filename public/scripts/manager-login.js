@@ -23,7 +23,6 @@ loginButton.addEventListener("click", (e) => {
       // Signed in
       const user = userCredential.user;
       console.log(user);
-      alert(`Login successful, welcome ${user.email}`);
       localStorage.setItem("user", JSON.stringify(user.email));
       window.location.href = "manager-page.html";
     })
@@ -32,13 +31,13 @@ loginButton.addEventListener("click", (e) => {
       const errorMessage = error.message;
       switch (errorCode) {
         case "auth/wrong-password":
-          alert("Wrong password.");
+          showAlertModal("Wrong password.");
           break;
         case "auth/user-not-found":
-          alert("User not found.");
+          showAlertModal("User not found.");
           break;
         case "auth/invalid-email":
-          alert("Invalid email.");
+          showAlertModal("Invalid email.");
           break;
         default:
           `Login failed becuse of error: ${errorMessage} code: ${errorCode}`;
@@ -55,15 +54,17 @@ const checkloggedin = () => {
 
 checkloggedin();
 
-//write the login as function in try catch and call it in the event listener
-/*
-loginButton.addEventListener("click", (e) => {
-  e.preventDefault();
-  try {
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-    login(email, password);
-  } catch (error) {
-    console.log(error);
-  }
-});*/
+const showAlertModal = (message) => {
+  // Select the modal element using its ID 'alertModal'.
+  const alertModal = document.getElementById("alertModal");
+
+  // Select the modal body element using its ID 'alertModalBody'.
+  const alertModalBody = document.getElementById("alertModalBody");
+
+  // Update the text content of the modal body with the provided message.
+  alertModalBody.textContent = message;
+
+  // Show the modal using Bootstrap's 'modal' method with the 'show' argument.
+  const bootstrapModal = new bootstrap.Modal(alertModal);
+  bootstrapModal.show();
+};

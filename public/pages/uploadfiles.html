@@ -28,9 +28,6 @@
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -142,13 +139,24 @@
                 שלח
               </button>
             </div>
-            <div class="modal" tabindex="-1" id="loading-modal">
+            <div id="loading-modal" class="modal">
               <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
-                  <div class="modal-body text-center">
-                    <div class="spinner-border" role="status">
-                      <span class="sr-only"></span>
+                  <div class="modal-body">
+                    <div class="d-flex justify-content-center">
+                      <div class="spinner-border" id="circle" role="status">
+                        <span class="sr-only"></span>
+                      </div>
                     </div>
+                    <p id="loadingMessage" class="text-center mt-2"></p>
+                    <button
+                      id="closeButton"
+                      class="btn btn-primary"
+                      style="display: none"
+                      data-dismiss="modal"
+                    >
+                      Close
+                    </button>
                   </div>
                 </div>
               </div>
@@ -156,6 +164,7 @@
           </form>
         </div>
       </div>
+
       <div class="row justify-content-center mt-2">
         <div class="col text-center">
           <img
@@ -197,16 +206,16 @@
           </div>
           <div class="col-sm-9 d-flex justify-content-around">
             <a href="https://facebook.com" target="_blank">
-              <img class="face" aria-label="Facebook" />
+              <img class="face" />
             </a>
             <a href="https://twitter.com" target="_blank">
-              <img class="twitt" aria-label="Twitter" />
+              <img class="twitt" " />
             </a>
             <a href="https://instagram.com" target="_blank">
-              <img class="inst" aria-label="Instagram" />
+              <img class="inst" />
             </a>
             <a href="https://linkedin.com" target="_blank">
-              <img class="linkedin" aria-label="LinkedIn" />
+              <img class="linkedin" />
             </a>
           </div>
         </div>
