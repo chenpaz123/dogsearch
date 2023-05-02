@@ -99,51 +99,60 @@ onValue(ref(db, "chip/"), async (snapshot) => {
   }
 });
 
-const response = {
-  Count: 1,
-  Date: "04/30/2023 14:59:24",
-  AnimalDetails: [
-    {
-      AnimalType: "כלב",
-      ChipNumber: "939000007508553",
-      AnimalName: "פארוק",
-      Gender: "זכר",
-      Race: "פודל",
-      Color: "שחור",
-      BrithDate: "02/2011",
-      DangerousDog: false,
-      GuidingDog: false,
-      SecurityDog: false,
-      OwnerName: "פז איריס ואמיר",
-      Address: "ביאליק 162/46",
-      City: "חולון",
-      CellPhone: "052-4244342",
-      Yikur: true,
-      Hisun: "13",
-      HisunDate: "10/04/2023",
-      VetName: "היימן גיורא דב",
-      Vetnumber: "669",
-      LicenceNumber: "2335",
-      LicenceDate: "01/02/2011",
-      LastUpdate: "23/04/2023",
-      Status: "פעיל",
-      Brucella: false,
-      MdBAddress: " ",
-    },
-  ],
+const demoDB = (chip) => {
+  const response = {
+    Count: 1,
+    Date: "04/30/2023 14:59:24",
+    AnimalDetails: [
+      {
+        AnimalType: "כלב",
+        ChipNumber: "939000007508553",
+        AnimalName: "פארוק",
+        Gender: "זכר",
+        Race: "פודל",
+        Color: "שחור",
+        BrithDate: "02/2011",
+        DangerousDog: false,
+        GuidingDog: false,
+        SecurityDog: false,
+        OwnerName: "פז איריס ואמיר",
+        Address: "ביאליק 162/46",
+        City: "חולון",
+        CellPhone: "052-4244342",
+        Yikur: true,
+        Hisun: "13",
+        HisunDate: "10/04/2023",
+        VetName: "היימן גיורא דב",
+        Vetnumber: "669",
+        LicenceNumber: "2335",
+        LicenceDate: "01/02/2011",
+        LastUpdate: "23/04/2023",
+        Status: "פעיל",
+        Brucella: false,
+        MdBAddress: " ",
+      },
+    ],
+  };
+
+  for (let i = 0; i < response["Count"]; i++) {
+    if (response["AnimalDetails"][i]["ChipNumber"] == String(chip)) {
+      console.log("in if");
+      return response;
+    } else {
+      return null;
+    }
+  }
 };
 
 const getdatafrommoagdb = (ChipNum) => {
   console.log("in bewwwww");
-  const data = response;
-  if ((ChipNum = data["AnimalDetails"][0]["ChipNumber"])) {
-    console.log("chip number is the same");
-    console.log(ChipNum);
+  const data = demoDB(ChipNum);
+  console.log(data);
+  if (data != null) {
+    console.log("in if");
     addDogToShow(data);
   } else {
-    console.log("chip number is not the same");
-    showAlertModal("מספר השבב שהזנת אינו קיים במערכת");
-    console.log(ChipNum);
+    showAlertModal("הכלב לא נמצא במאגר");
   }
 };
 
