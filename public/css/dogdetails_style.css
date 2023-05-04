@@ -1,36 +1,6 @@
 /* Import the contents of the external CSS file "nav_style.css" */
 @import "nav_style.css";
 
-/* Start a CSS rule for the ID "button2chip" */
-#button2chip {
-  /* Set the background color of the element */
-  background-color: #4caf50;
-
-  /* Set the text color of the element to white */
-  color: white;
-
-  /* Set the padding around the element */
-  padding: 14px 20px;
-
-  /* Set the margin around the element */
-  margin: 8px 0;
-
-  /* Remove the default border of the element */
-  border: none;
-
-  /* Set the border radius to create rounded corners */
-  border-radius: 4px;
-
-  /* Set the cursor to a pointer when hovering over the element */
-  cursor: pointer;
-}
-
-/* Start a CSS rule for the ID "button2" when the element is hovered */
-#button2:hover {
-  /* Set the background color of the element when hovered */
-  background-color: #45a049;
-}
-
 /* Start a CSS rule for the class "center-content" */
 .center-content {
   /* Enable the use of the Flexbox layout for the element's content */

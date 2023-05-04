@@ -39,8 +39,20 @@ loginButton.addEventListener("click", (e) => {
         case "auth/invalid-email":
           showAlertModal("Invalid email.");
           break;
+        case "auth/too-many-requests":
+          showAlertModal("Too many requests.");
+          break;
+        case "auth/network-request-failed":
+          showAlertModal("Network request failed.");
+          break;
+        case "auth/internal-error":
+          showAlertModal("Internal error.");
+          break;
         default:
-          `Login failed becuse of error: ${errorMessage} code: ${errorCode}`;
+          showAlertModal(
+            `Login failed becuse of error: ${errorMessage} code: ${errorCode}`
+          );
+          break;
       }
     });
 });

@@ -11,7 +11,7 @@
     url("../img/pupp.JPG");
 
   /* Set the size of the background images */
-  background-size: auto, cover;
+  background-size: cover;
 
   /* Set the attachment behavior of the background images */
   background-attachment: scroll, fixed;
@@ -51,7 +51,7 @@ h2 {
   background-position: 80% 0%, 0px 0px;
 
   /* Set the size of the background images */
-  background-size: cover, auto;
+  background-size: auto;
 
   /* Set the repeat behavior of the background images */
   background-repeat: no-repeat;

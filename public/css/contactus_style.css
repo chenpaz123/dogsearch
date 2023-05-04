@@ -10,7 +10,7 @@
     url("../img/goblets.jpg");
 
   /* Set the size of the background images */
-  background-size: auto, cover;
+  background-size: cover;
 
   /* Set the attachment behavior of the background images */
   background-attachment: scroll, fixed;

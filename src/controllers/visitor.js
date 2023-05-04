@@ -60,9 +60,15 @@ const getvisitordata = async ({ showdate, image, chipnum }) => {
       };
     }
     // Fix the date format using the fixdate utility function
+    console.log("og date" + date);
     date2 = fixdate(date);
     console.log(date, date2);
     console.log(date2, chip);
+
+    console.log("date from ocr" + date2);
+    console.log("showdate" + showdate);
+    console.log("chip from ocr" + chip);
+
     // Check if the Brucella date is valid by comparing it to the show date
     const BrucellaValid = GetBrucellaValid(date2, showdate);
     console.log("brucella valid" + BrucellaValid);

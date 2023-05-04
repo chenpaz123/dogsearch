@@ -27,19 +27,6 @@
 
 /* Start a CSS rule for the hover state of the elements with class "nav-btn" */
 .nav-btn:hover {
-  /* Set the background image of the elements with class "nav-btn" to the specified URL */
-  background-image: url("https://uploads-ssl.webflow.com/64073eff0672ea5a62d4d364/64074f5683d9814117b28b8e_f%2Co2.png");
-
-  /* Set the size of the background image to cover 100% of the element's width and height */
-  background-size: 100% 100%;
-
-  /* Set the background image to not repeat within the element */
-  background-repeat: no-repeat;
-
-  /* Set the position of the background image to be centered within the element */
-  background-position: center;
-
-  /* Set the text color of the elements with class "nav-btn" to white */
   color: white;
 }
 
