@@ -1,4 +1,4 @@
-a node js server with express for checking dogs in shows, checking brucella and rabies vaccines automatically instead of manually by the vet at the show.
+A Node.js server with Express framework for streamlining show registration and verification of Brucella and rabies vaccinations through secure data integration, removing the need for manual on-site inspection.
 
 ## Installation
 
