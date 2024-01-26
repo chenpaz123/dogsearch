@@ -12,7 +12,7 @@ replace the provided createworker.js with the original file that is in the follo
 ## Usage
 
 ```bash
-npm start
+npm run dev
 ```
 
 ## Authors and acknowledgment
