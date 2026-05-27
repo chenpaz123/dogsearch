@@ -7,6 +7,7 @@ const ocrrouter = require("./routers/ocr");
 const visitordatarouter = require("./routers/visitor");
 const brucellarouter = require("./routers/brucella");
 const mangerouter = require("./routers/manger");
+const vetrouter = require("./routers/vet");
 
 app.use(
   cors({
@@ -26,6 +27,7 @@ app.use(ocrrouter);
 app.use(visitordatarouter);
 app.use(brucellarouter);
 app.use(mangerouter);
+app.use(vetrouter);
 
 app.get("/", (req, res) => {
   res.send({

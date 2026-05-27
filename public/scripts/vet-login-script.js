@@ -37,23 +37,24 @@ var tempvetlastname = "null";
 
 const checkPassword = async () => {
   var password = document.getElementById("license number").value;
-  const url = `https://data.gov.il/api/3/action/datastore_search?resource_id=14339de6-278c-49ed-a6c1-307044aaee3f&limit=5&q=${password}`;
+  const url = `/vetlogin`;
   console.log(url);
   try {
-    const response = await fetch(url);
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ password }),
+    });
     const data = await response.json();
     console.log(data);
-    console.log(data.result.records[0]);
-    if (data.result.records.length == 0) {
-      throw new Error("משתמש לא קיים");
+
+    if (data.status !== 200) {
+      throw new Error(data.message || "משתמש לא קיים");
     }
-    const newdata = data.result.records[0];
-    console.log(newdata);
-    const {
-      שם_פרטי: vetfirstname,
-      שם_משפחה: vetlastname,
-      מספר_רשיון: licensenumber,
-    } = newdata;
+
+    const { vetfirstname, vetlastname, licensenumber } = data;
 
     //save the vet's name in the local storage
     localStorage.setItem("vetfirstname", vetfirstname);
@@ -65,9 +66,8 @@ const checkPassword = async () => {
     console.log(licensenumber);
     tempvetfirstname = vetfirstname;
     tempvetlastname = vetlastname;
-    if (licensenumber == password) {
-      window.location.href = "../pages/dog-details.html";
-    }
+
+    window.location.href = "../pages/dog-details.html";
   } catch (error) {
     console.log(error);
     alert(error);
