@@ -33,6 +33,9 @@ const extractChip = (text) => {
  * @returns {Array<string>} An array of strings containing negative results.
  */
 const extractResult = (text) => {
+  if (typeof text !== 'string') {
+    return "unknown";
+  }
   const negregex = /(Negative|NEGATIVE|negative|שלילי)/gi;
   const posregex = /(Positive|POSITIVE|positive|חיובי)/gi;
   if (text.match(negregex) != null) {
