@@ -22,11 +22,27 @@ const addDogToShow = async ({
   data, //dog data
   Show, // Show to add the dog to
 }) => {
-  const docname = `${Show}`;
+  if (!Show || (typeof Show !== 'string' && typeof Show !== 'number')) {
+    return { status: 400, message: "Invalid Show parameter" };
+  }
+  const docname = String(Show);
+  if (docname.includes('/') || docname === '.' || docname === '..') {
+    return { status: 400, message: "Invalid Show parameter" };
+  }
+
   // Extract dog information from the data object
   try {
     const dog = data["AnimalDetails"][0]; //dog data
     const ChipNum = data["AnimalDetails"][0]["ChipNumber"]; //chip number
+
+    if (!ChipNum || (typeof ChipNum !== 'string' && typeof ChipNum !== 'number')) {
+      return { status: 400, message: "Invalid ChipNumber parameter" };
+    }
+    const chipNumStr = String(ChipNum);
+    if (chipNumStr.includes('/') || chipNumStr === '.' || chipNumStr === '..') {
+      return { status: 400, message: "Invalid ChipNumber parameter" };
+    }
+
     HisunDate = data["AnimalDetails"][0]["HisunDate"]; // Kalevet hisun date
     IsValid = GetHisunValid(HisunDate); //check if the Kalevet is valid
     console.log(IsValid);
@@ -37,7 +53,7 @@ const addDogToShow = async ({
       .collection("shows")
       .doc(docname)
       .collection("dogs")
-      .doc(String(ChipNum));
+      .doc(chipNumStr);
 
     // Retrieve the dog document from the database
     const doc = await docRef.get();
@@ -48,7 +64,7 @@ const addDogToShow = async ({
         .collection("shows")
         .doc(docname)
         .collection("dogs")
-        .doc(String(ChipNum))
+        .doc(chipNumStr)
         .update(dog);
       brucelladate = doc.data().brucella;
       return {
