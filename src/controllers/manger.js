@@ -1,5 +1,6 @@
 const { db } = require("../firebase/firebase");
 const { fixdatetodot } = require("../utils/fixdate");
+const { isValidInput } = require("../utils/validation");
 /**
  * Creates a new show in the database with a given showName and date.
  *
@@ -10,6 +11,13 @@ const { fixdatetodot } = require("../utils/fixdate");
  */
 
 const createShow = async (showName, date, desc) => {
+  if (!isValidInput(showName)) {
+    return {
+      message: "Invalid input",
+      status: 400,
+    };
+  }
+
   date = fixdatetodot(date);
   const show = await db.collection("shows").doc(`${showName} - ${date}`);
   //set the desc as a field in the show document
@@ -83,6 +91,13 @@ const getallshows = async () => {
 const deleteShow = async (show) => {
   console.log(show);
   console.log("in func");
+  if (!isValidInput(show.name)) {
+    return {
+      message: "Invalid input",
+      status: 400,
+    };
+  }
+
   const showName = `${show.name} - ${show.date}`;
   const showdoc = await db.collection("shows").doc(`${showName}`);
   try {
@@ -114,6 +129,14 @@ const deleteShow = async (show) => {
 
 const updateshow = async (oldshow, updatedshow) => {
   console.log(oldshow, updatedshow);
+
+  if (!isValidInput(oldshow.name) || !isValidInput(updatedshow.name)) {
+    return {
+      message: "Invalid input",
+      status: 400,
+    };
+  }
+
   const oldshowName = `${oldshow.name} - ${oldshow.date}`;
   const oldshowdoc = await db.collection("shows").doc(`${oldshowName}`);
   updatedshow.date = fixdatetodot(updatedshow.date);
