@@ -6,6 +6,7 @@ const {
   deleteShow,
   getallshows,
 } = require("../controllers/manger");
+const verifyToken = require("../middleware/auth");
 
 /**
  * Handles the POST request to create a new show.
@@ -18,7 +19,7 @@ const {
  * @param {string} req.body.desc - The description of the show.
  * @param {Object} res - The Express response object.
  */
-router.post("/createShow", async (req, res) => {
+router.post("/createShow", verifyToken, async (req, res) => {
   const showName = req.body.showName;
   const date = req.body.date;
   const desc = req.body.desc;
@@ -36,7 +37,7 @@ router.post("/createShow", async (req, res) => {
  * @param {Object} req.body.updatedshow - The object containing the updated show details.
  * @param {Object} res - The Express response object.
  */
-router.patch("/updateshow", async (req, res) => {
+router.patch("/updateshow", verifyToken, async (req, res) => {
   oldshow = req.body.oldshow;
   updatedshow = req.body.updatedshow;
   console.log(oldshow, updatedshow);
@@ -52,7 +53,7 @@ router.patch("/updateshow", async (req, res) => {
  * @param {Object} req.body - The request body containing the show information.
  * @param {Object} res - The Express response object.
  */
-router.delete("/deleteShow", async (req, res) => {
+router.delete("/deleteShow", verifyToken, async (req, res) => {
   console.log(req.body);
   console.log("in router");
   const getshow = req.body;
@@ -67,7 +68,7 @@ router.delete("/deleteShow", async (req, res) => {
  * @param {Object} req - The Express request object.
  * @param {Object} res - The Express response object.
  */
-router.get("/getallshows", async (req, res) => {
+router.get("/getallshows", verifyToken, async (req, res) => {
   const response = await getallshows();
   res.send(response);
 });
