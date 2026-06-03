@@ -23,11 +23,14 @@ const addDogToShow = async ({
   Show, // Show to add the dog to
 }) => {
   const docname = `${Show}`;
+  let IsValid;
+  let brucelladate;
+  let docExists;
   // Extract dog information from the data object
   try {
     const dog = data["AnimalDetails"][0]; //dog data
     const ChipNum = data["AnimalDetails"][0]["ChipNumber"]; //chip number
-    HisunDate = data["AnimalDetails"][0]["HisunDate"]; // Kalevet hisun date
+    const HisunDate = data["AnimalDetails"][0]["HisunDate"]; // Kalevet hisun date
     IsValid = GetHisunValid(HisunDate); //check if the Kalevet is valid
     console.log(IsValid);
     console.log(dog);
@@ -41,9 +44,10 @@ const addDogToShow = async ({
 
     // Retrieve the dog document from the database
     const doc = await docRef.get();
+    if (doc) docExists = doc.exists;
     // If the Kalevet is valid and the dog document exists in the database,
     //update the dog information
-    if (IsValid && doc.exists) {
+    if (IsValid && docExists) {
       await db
         .collection("shows")
         .doc(docname)
@@ -55,7 +59,7 @@ const addDogToShow = async ({
         dog: dog,
         KalevetValid: IsValid,
         brucelladate: brucelladate,
-        BrucellaValid: doc.exists,
+        BrucellaValid: docExists,
         status: 201,
         message: "dog added to the show",
       };
@@ -64,7 +68,7 @@ const addDogToShow = async ({
         dog: dog,
         status: 400,
         KalevetValid: IsValid,
-        BrucellaValid: doc.exists,
+        BrucellaValid: docExists,
         message: "can't add dog to the show",
       };
     }
@@ -73,9 +77,9 @@ const addDogToShow = async ({
     // Handle error scenarios
     if (error == "TypeError: Failed to fetch") {
       return {
-        KalevetValid: IsValid,
-        brucelladate: brucelladate,
-        BrucellaValid: doc.exists,
+        KalevetValid: typeof IsValid !== 'undefined' ? IsValid : undefined,
+        brucelladate: typeof brucelladate !== 'undefined' ? brucelladate : undefined,
+        BrucellaValid: typeof docExists !== 'undefined' ? docExists : undefined,
         message: "אין חיבור לאינטרנט",
         status: 500,
       };
