@@ -73,9 +73,9 @@ const addDogToShow = async ({
     // Handle error scenarios
     if (error == "TypeError: Failed to fetch") {
       return {
-        KalevetValid: IsValid,
-        brucelladate: brucelladate,
-        BrucellaValid: doc.exists,
+        KalevetValid: typeof IsValid !== 'undefined' ? IsValid : false,
+        brucelladate: undefined,
+        BrucellaValid: false,
         message: "אין חיבור לאינטרנט",
         status: 500,
       };
