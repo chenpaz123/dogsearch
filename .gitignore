@@ -1,9 +1,23 @@
-node_modules
+node_modules/
 .env
+.vscode/
+.github/
 src/firebase/key.json
 public/scripts/firebaseconfig.json
 test.js
-.dist
+.dist/
 src/controllers/manger-Laptop.js
 public/pages/temp
-tests
+firebaseconfig.js
+uploads/*
+!uploads/.gitkeep
+__mocks__/
+
+# Test output files
+test-*.txt
+*-output.txt
+ocr-test-output.txt
+test-ocr-manual.js
+
+# Package lock backups
+package-lock-*.json

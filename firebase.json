@@ -1,0 +1,30 @@
+{
+    "functions":  {
+                      "source":  ".",
+                      "runtime":  "nodejs18",
+                      "ignore":  [
+                                     "firebase.json",
+                                     "**/.*",
+                                     "**/node_modules/**",
+                                     "public/**",
+                                     "tests/**",
+                                     "src/tests/**",
+                                     "jest.config.js",
+                                     ".firebaserc"
+                                 ]
+                  },
+    "hosting":  {
+                    "public":  "public",
+                    "ignore":  [
+                                   "firebase.json",
+                                   "**/.*",
+                                   "**/node_modules/**"
+                               ],
+                    "rewrites":  [
+                                     {
+                                         "source":  "**",
+                                         "function":  "app"
+                                     }
+                                 ]
+                }
+}
