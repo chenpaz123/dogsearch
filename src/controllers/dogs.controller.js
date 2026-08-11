@@ -53,11 +53,11 @@ const addDogToShow = async ({ data, Show, ChipNum }) => {
       dogRecord = lookup?.AnimalDetails?.[0];
       resolvedChip = dogRecord?.["ChipNumber"];
     } catch (error) {
-       logger.error("failed to fetch from moag db", { error });
-       if (error?.message?.includes("Failed to fetch")) {
-          throw new ServiceUnavailableError(ERROR_MESSAGES.EXTERNAL_SERVICE_UNAVAILABLE);
-       }
-       throw error; // Re-throw to be caught by global handler
+       logger.error("failed to fetch from moag db", { error: error.message });
+       // Any failure to reach or parse the external MOAG registry (network
+       // error, non-2xx status, or a non-JSON body such as a WAF challenge
+       // page) means the registry is effectively unavailable to us.
+       throw new ServiceUnavailableError(ERROR_MESSAGES.EXTERNAL_SERVICE_UNAVAILABLE);
     }
   }
 
