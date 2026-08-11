@@ -6,7 +6,7 @@ const logger = createLogger("utils:getdatafrommoagdb");
 const getdatafrommoagdb = async (ChipNum) => {
   logger.debug("querying moag db", { chip: ChipNum });
   const url = "https://dogsearch.moag.gov.il/api/GetAnimalDetails";
-  const senddata = { SearchParam: ChipNum, top: 10, skip: 0 };
+  const senddata = { SearchParam: String(ChipNum), top: 10, skip: 0 };
   try {
     const response = await fetch(url, {
       method: "POST",

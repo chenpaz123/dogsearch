@@ -100,7 +100,7 @@ const initFirebase = async () => {
       const data = snapshot.val();
       if (data !== 0) {
         Clear();
-        await getdatafrommoagdb(data);
+        await addDogToShow(data);
       }
       //change the value of the chip number in the database to 0
       try {
@@ -121,35 +121,20 @@ const initFirebase = async () => {
 initFirebase();
 
 /**
- * Fetches dog details from the MOAG (Ministry of Agriculture) database.
- * 
- * @param {string} ChipNum - The dog's chip number.
+ * Sends the scanned chip number to our own backend, which resolves the dog
+ * record server-side via MOAG.
+ *
+ * MOAG's site now sits behind an AWS WAF that issues a CAPTCHA challenge on
+ * the CORS preflight for any cross-origin browser request, so this can no
+ * longer be fetched directly from the browser (regardless of origin/port).
+ * The backend's `addDogToShow` controller already falls back to a
+ * server-to-server MOAG lookup (no CORS involved) when given just a
+ * `ChipNum`, so we let it do the lookup instead of fetching MOAG here.
+ *
+ * @param {string|number} chipNum - The scanned chip number.
  */
-const getdatafrommoagdb = async (ChipNum) => {
-  const url = "https://dogsearch.moag.gov.il/api/GetAnimalDetails";
-  const senddata = { SearchParam: ChipNum, top: 10, skip: 0 };
-  try {
-    const response = await fetch(url, {
-      method: "POST",
-      body: JSON.stringify(senddata),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const data = await response.json();
-    await addDogToShow(data);
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-const addDogToShow = async (chipdata) => {
-  if (chipdata["Count"] === 0) {
-    showAlertModal("המאגר לא זמין כעת, נסה שוב בעוד מספר שניות");
-    return;
-  }
-
-  const url = `http://localhost:3000/addDogToShow`;
+const addDogToShow = async (chipNum) => {
+  const url = `${getApiBase()}/addDogToShow`;
   const Show = localStorage.getItem("showname");
   document.getElementById("scan dog").style.display = "none";
   try {
@@ -159,30 +144,39 @@ const addDogToShow = async (chipdata) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        Show: Show,
-        data: chipdata,
+        Show,
+        ChipNum: chipNum,
       }),
     });
     const data = await response.json();
 
+    if (data.dog) {
+      PrintData(data);
+    }
+
     switch (data.status) {
-      case 201:
-        PrintData(data);
+      case 200:
         showAlertModal("הכלב רשאי להיכנס לתערוכה");
         break;
-      case 400:
-        PrintData(data);
-        showAlertModal("הכלב אינו רשאי להיכנס לתערוכה");
+      case 409:
+        showAlertModal("לא נמצאה בדיקת ברוצלה לכלב זה בתערוכה");
         break;
-      case 500:
-        showAlertModal("אין חיבור לאינטרנט");
+      case 422:
+        showAlertModal("חיסון הכלבת אינו בתוקף");
         break;
       case 404:
         showAlertModal("מספר השבב שהזנת אינו קיים במערכת");
         break;
+      case 503:
+        showAlertModal("אין חיבור למאגר משרד החקלאות, נסה שוב בעוד מספר שניות");
+        break;
+      default:
+        showAlertModal(data.message || "אירעה שגיאה, נסה שוב");
+        break;
     }
   } catch (error) {
     console.error(error);
+    showAlertModal("שגיאה בתקשורת עם השרת");
   }
 };
 

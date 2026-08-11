@@ -191,20 +191,28 @@ const addDogToShow = async (chipdata) => {
     });
     const data = await response.json();
 
+    if (data.dog) {
+      PrintData(data);
+    }
+
     switch (data.status) {
-      case 201:
-        PrintData(data);
+      case 200:
         showAlertModal("הכלב רשאי להיכנס לתערוכה");
         break;
-      case 400:
-        PrintData(data);
-        showAlertModal("הכלב אינו רשאי להיכנס לתערוכה");
+      case 409:
+        showAlertModal("לא נמצאה בדיקת ברוצלה לכלב זה בתערוכה");
         break;
-      case 500:
-        showAlertModal("אין חיבור לאינטרנט");
+      case 422:
+        showAlertModal("חיסון הכלבת אינו בתוקף");
         break;
       case 404:
         showAlertModal("מספר השבב שהזנת אינו קיים במערכת");
+        break;
+      case 503:
+        showAlertModal("אין חיבור למאגר משרד החקלאות, נסה שוב בעוד מספר שניות");
+        break;
+      default:
+        showAlertModal(data.message || "אירעה שגיאה, נסה שוב");
         break;
     }
   } catch (error) {
