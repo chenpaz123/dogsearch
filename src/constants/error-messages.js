@@ -34,6 +34,11 @@ module.exports = {
   
   // External Services
   EXTERNAL_SERVICE_UNAVAILABLE: 'external registry unavailable',
+
+  // Vet Login
+  LICENSE_NUMBER_REQUIRED: 'license number is required',
+  VET_NOT_FOUND: 'no veterinarian found for this license number',
+  VET_LOGIN_SUCCESS: 'vet login successful',
   
   // Shows
   SHOW_NAME_DATE_REQUIRED: 'Show name and date are required',
@@ -43,6 +48,8 @@ module.exports = {
   SHOWS_RETURNED: 'shows returned',
   NO_SHOWS_AVAILABLE: 'no shows available',
   SHOW_NAME_REQUIRED: 'show name is required',
+  INVALID_SHOW_ID: 'invalid show identifier',
+  INVALID_CHIP_NUMBER: 'invalid chip number',
   INVALID_PAYLOAD: 'invalid payload',
   
   // Generic

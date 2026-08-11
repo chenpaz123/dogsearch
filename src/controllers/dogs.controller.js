@@ -1,5 +1,6 @@
 const { GetHisunValid } = require("../utils/chip-validator.util");
 const { getdatafrommoagdb } = require("../utils/moag-api.util");
+const { isValidFirestoreDocId } = require("../utils/firestore-id.util");
 const { db } = require("../firebase/firebase");
 const { withCache, invalidateCache } = require("../utils/cache.util");
 const { showDogCacheKey } = require("../utils/cache-keys.util");
@@ -38,6 +39,9 @@ const addDogToShow = async ({ data, Show, ChipNum }) => {
   if (!Show) {
     throw new ValidationError(ERROR_MESSAGES.SHOW_NAME_REQUIRED);
   }
+  if (!isValidFirestoreDocId(Show)) {
+    throw new ValidationError(ERROR_MESSAGES.INVALID_SHOW_ID);
+  }
 
   const docname = `${Show}`;
 
@@ -63,6 +67,9 @@ const addDogToShow = async ({ data, Show, ChipNum }) => {
 
   if (!dogRecord || !resolvedChip) {
     throw new NotFoundError(ERROR_MESSAGES.DOG_NOT_FOUND);
+  }
+  if (!isValidFirestoreDocId(resolvedChip)) {
+    throw new ValidationError(ERROR_MESSAGES.INVALID_CHIP_NUMBER);
   }
 
   const hisunDate = dogRecord["HisunDate"];

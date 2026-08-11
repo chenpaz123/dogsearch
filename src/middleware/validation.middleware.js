@@ -1,6 +1,16 @@
 const Joi = require('joi');
 const HTTP_STATUS = require('../constants/http-status');
 const ERROR_MESSAGES = require('../constants/error-messages');
+const { isValidFirestoreDocId } = require('../utils/firestore-id.util');
+
+// Rejects values that would be unsafe to use as a Firestore document ID
+// (e.g. containing "/", which the Admin SDK treats as a path separator).
+const firestoreDocId = (value, helpers) => {
+  if (!isValidFirestoreDocId(value)) {
+    return helpers.error('any.invalid');
+  }
+  return value;
+};
 
 // Generic validation middleware
 const validate = (schema) => (req, res, next) => {
@@ -49,7 +59,7 @@ const addDogSchema = Joi.object({
   data: Joi.object({
     AnimalDetails: Joi.array().items(Joi.object()).optional(),
   }).optional(),
-  Show: Joi.string().required(),
+  Show: Joi.string().required().custom(firestoreDocId, 'Firestore document id safety check'),
   ChipNum: Joi.alternatives().try(
     Joi.string().pattern(/^\d{15}$/),
     Joi.number()
@@ -85,6 +95,10 @@ const brucellaSchema = Joi.object({
   brucella: Joi.string().required(),
 });
 
+const vetLoginSchema = Joi.object({
+  licenseNumber: Joi.string().required().trim().min(1).max(50),
+});
+
 const paginationSchema = Joi.object({
   limit: Joi.number().integer().min(1).max(100).default(50),
   offset: Joi.number().integer().min(0).default(0),
@@ -99,5 +113,6 @@ module.exports = {
   updateShowSchema,
   deleteShowSchema,
   brucellaSchema,
+  vetLoginSchema,
   paginationSchema,
 };

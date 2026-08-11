@@ -16,6 +16,7 @@ const managerrouter = require("./routers/manager.router");
 const uploadrouter = require("./routers/upload.router");
 const configrouter = require("./routers/config.router");
 const authrouter = require("./routers/auth.router");
+const vetrouter = require("./routers/vet.router");
 const geoRestriction = require("./middleware/geo-restriction.middleware");
 const { logger } = require("./utils/logger.util");
 
@@ -104,6 +105,7 @@ app.use(managerrouter);
 app.use(uploadrouter);
 app.use(configrouter);
 app.use(authrouter);
+app.use(vetrouter);
 
 // Serve static files from the public directory
 app.use(express.static(path.join(__dirname, "..", "public")));

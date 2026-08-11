@@ -101,4 +101,22 @@ describe("addDogToShow controller messages", () => {
 
     await expect(addDogToShow(baseRequest)).rejects.toThrow("boom");
   });
+
+  it("rejects a Show value that would escape the intended Firestore path", async () => {
+    await expect(
+      addDogToShow({ ...baseRequest, Show: "shows/other/dogs" })
+    ).rejects.toThrow("invalid show identifier");
+  });
+
+  it("rejects a ChipNum value that would escape the intended Firestore path", async () => {
+    await expect(
+      addDogToShow({
+        ...baseRequest,
+        ChipNum: "123/../secret",
+        data: {
+          AnimalDetails: [{ ChipNumber: "123/../secret", HisunDate: "01/01/2024" }],
+        },
+      })
+    ).rejects.toThrow("invalid chip number");
+  });
 });
